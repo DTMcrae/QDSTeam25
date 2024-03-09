@@ -13,9 +13,27 @@
       <div class="container"></div>
 
       <div class="row">
-        <div class="stats-column">Hunger</div>
-        <div class="stats-column">Energy</div>
-        <div class="stats-column">Happiness</div>
+        <div class="stats-column">
+          <div class="progressBarContainer">
+            <div class="progressBar" id="hunger">
+            </div>
+          </div>
+          Hunger
+        </div>
+        <div class="stats-column">
+          <div class="progressBarContainer">
+            <div class="progressBar" id="energy">
+            </div>
+          </div>
+          Energy
+        </div>
+        <div class="stats-column">
+          <div class="progressBarContainer">
+            <div class="progressBar" id="happiness">
+            </div>
+          </div>
+          Happiness
+        </div>
       </div>
       <div class="row">
         <div class="sleeping-box">Sleeping</div>
@@ -67,3 +85,4 @@
           sleepingBoxContainer.style.visibility = toggle.checked ? 'visible' : 'hidden';
         });
       </script>
+      <script src='scripts/pet_status_display.js'></script>
