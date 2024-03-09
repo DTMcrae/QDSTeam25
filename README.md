@@ -100,7 +100,7 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
    cd /QDSTeam25
    npm install
    ```
-4. Add a .env file into the root folder and add the following information to it:
+4. Add a .env file into the root folder and add the following information:
    ```js
     MONGODB_HOST=cluster0.irbsxph.mongodb.net
     MONGODB_USER=myr9901
@@ -109,7 +109,7 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
     MONGODB_SESSION_SECRET=e022cbbd-3c0b-4d94-bf69-934ce0473a76
     NODE_SESSION_SECRET=fc153adb-a901-457f-a65a-fe08d8474f67
    ```
-5. Start the project
+5. From a terminal, start the project
    ```sh
    node index.js
    ```
@@ -156,9 +156,6 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
