@@ -67,76 +67,54 @@ app.get('/login', (req,res) => {
 
 app.post('/signupSubmit', async (req, res) => {
     // Logic for handling the signup-submit route and processing the signup form submission
-  let password = req.body.password;
-  let email = req.body.email?.trim();
+    let password = req.body.password;
+    let email = req.body.email?.trim();
 
-  if (req.session.authenticated) {
+    if (req.session.authenticated) {
+        res.redirect('/');
+        return;
+    }
+
+    // check if the id already exists
+    const emailCheck = await userCollection.find({email: email}).project({_id: 1}).toArray();
+
+    if (emailCheck.length > 0) {
+        res.render('signup-submit', {
+        signupFail: true,
+        errorMessage: `This email already exists. \n Please choose a different email.`
+        });
+        return;
+    }
+
+    // If inputs are valid, add the member
+    let hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    await userCollection.insertOne({email: email, password: hashedPassword});
+    console.log("Inserted user");
+
+    // Create a session
+    req.session.authenticated = true;
+    req.session.email = email;
+    req.session.cookie.maxAge = expireTime;
+
+    // redirect the user to the / page.
     res.redirect('/');
-    return;
-  }
-
-  // check if the id already exists
-  const emailCheck = await userCollection.find({email: email}).project({_id: 1}).toArray();
-
-  if (emailCheck.length > 0) {
-    res.render('signup-submit', {
-      signupFail: true,
-      errorMessage: `This email already exists. \n Please choose a different email.`
-    });
-    return;
-  }
-
-  // If inputs are valid, add the member
-  let hashedPassword = await bcrypt.hash(password, saltRounds);
-
-  await userCollection.insertOne({email: email, password: hashedPassword});
-  console.log("Inserted user");
-
-  // Create a session
-  req.session.authenticated = true;
-  req.session.email = email;
-  req.session.cookie.maxAge = expireTime;
-
-  // redirect the user to the / page.
-  res.redirect('/');
 });
 
-// app.post('/loginSubmit', async (req, res) => {
-//     const { username, password } = req.body;
+app.post('/loginSubmit', async (req, res) => {
+    // Logic for handling the login-submit route and processing the login form submission
+    let email = req.body.email;
 
-//     try {
-//         // Query the database for a user with the provided username
-//         const [rows] = await database.execute(
-//             'SELECT * FROM user WHERE username = ?',
-//             [username]
-//         );
+    const result = await userCollection.find({email: email}).project({
+        password: 1,
+        _id: 1
+    }).toArray();
+    req.session.authenticated = true;
+    req.session.email = email;
+    req.session.cookie.maxAge = expireTime;
 
-//         // If no user found, render the invalid login view
-//         if (rows.length === 0) {
-//             return res.render("invalidLogin");
-//         }
-
-//         // User found, check the password
-//         const user = rows[0];
-//         const passwordMatches = await bcrypt.compare(password, user.password);
-
-//         if (passwordMatches) {
-//             // Password matches, set up the session
-//             req.session.authenticated = true;
-//             req.session.name = user.username;
-//             req.session.userId = user.user_id;
-//             req.session.cookie.maxAge = expireTime;
-
-//             return res.redirect('/chats');
-//         } else {
-//             // Password does not match
-//             return res.render("invalidLogin");
-//         }
-//     } catch (error) {
-//         console.error('Login error:', error);
-//         return res.status(500).render("error", {errorMessage: "Internal server error"});
-//     }
-// });
+    res.redirect('/');
+});
 
 
 app.get('/logout', (req,res) => {

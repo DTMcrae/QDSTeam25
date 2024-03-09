@@ -1,0 +1,10 @@
+<%- include("templates/header") %>
+<div class="form-wrapper signin">
+    <main class="form-signin w-100 m-auto">
+        <h2 class="form-signin-heading">
+            <%- errorMessage?.replaceAll('\n', '<br>') %>
+        </h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="location.href='/signup'">Try Again</button>
+    </main>
+</div>
+<%- include("templates/footer") %>
