@@ -93,7 +93,7 @@ app.get("/register_schedule", (req, res) => {
 
 app.post("/signupSubmit", async (req, res) => {
   // Logic for handling the signup-submit route and processing the signup form submission
-  let password = req.body.password;
+  let password = req.body.passwordConfirmed;
   let email = req.body.email?.trim();
 
   if (req.session.authenticated) {
@@ -169,7 +169,7 @@ app.post("/loginSubmit", async (req, res) => {
   req.session.cookie.maxAge = expireTime;
   req.session.userId = uid;
 
-  res.redirect("/");
+  res.redirect("/main");
 });
 
 app.post("/register_pet_type_submit", async (req, res) => {
