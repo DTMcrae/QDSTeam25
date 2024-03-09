@@ -32,6 +32,8 @@ let { database } = include("databaseConnection");
 const userCollection = database.db(mongodb_database).collection("users");
 const petCollection = database.db(mongodb_database).collection("pets");
 
+const stats = require(`./scripts/pet_status.js`); //Pet status script for api calls
+
 app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: false })); //middle ware
@@ -204,6 +206,12 @@ app.get("/logout", (req, res) => {
 });
 
 app.use(express.static(__dirname + "/public"));
+app.use(express.static("public"));
+app.use('/scripts', express.static("public/scripts"));
+
+app.get(`/api/stats`, (req,res) => {
+    res.json(stats.calculateStats());
+})
 
 app.get("*", (req, res) => {
   res.status(404);
