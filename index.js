@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
   if (!req.session.authenticated) {
     res.render("index_noLogIn");
   } else {
-    res.render("index_loggedIn", { req: req });
+    res.render("main", { req: req });
   }
 });
 
