@@ -1,15 +1,31 @@
-<%- include("templates/header") %>
-    <div class="register_pet_type_title text-center">
-        <h1>Step 3</h1>
-        <h1>Set your sleep</h1>
-        <h1>schedule</h1>
-    </div>
-    <form action='/register_schedule_submit' method='post' class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-        <div class="my-3">
-            <label for="floatingSleepTime">Sleep time</label>
-            <input name="sleepTime" type="time" class="form-control" id="floatingSleepTime">
-            <label for="floatingWakeTime">Wake time</label>
-            <input name="wakeTime" type="time" class="form-control" id="floatingWakeTime"> 
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+<link rel="stylesheet" href="css/phone.css" />
+<link rel="stylesheet" href="css/signup.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+
+<div class="phone">
+  <div class="phone-container">
+    <div style="margin-top: 60px"></div>
+    <h1>Step 3</h1>
+    <h1 style="margin-top: -10px">Set your sleep</h1>
+    <h1 style="margin-top: -10px">schedule</h1>
+    <form action="/register_schedule_submit" method="post">
+      <div class="form-label">Sleep time</div>
+      <input
+        name="sleepTime"
+        type="time"
+        class="form-control"
+        id="floatingSleepTime"
+        style="margin-bottom: 20px; padding-right: 5px"
+      />
+      <div class="form-label">Wake time</div>
+      <input
+        name="wakeTime"
+        type="time"
+        class="form-control"
+        id="floatingWakeTime"
+        style="margin-bottom: 20px; padding-right: 5px"
+      />
+      <button class="btn-purple" type="submit">Save</button>
     </form>
+  </div>
+</div>
