@@ -59,10 +59,18 @@
           </div>
           <div id="lightsText">Lights Out</div>
         </div>
-        <div class="action-column">Music</div>
+        <div class="action-column">
+          <div>
+            <label class="speaker">
+              <input type="checkbox">
+
+            </label>
+          </div>Music
+        </div>
+      </div>
       </div>
       <script>
-        // Function to toggle dark mode class on the body element
+        //SLEEPING TOGGLE
         var toggle = document.querySelector('.switch input[type="checkbox"]');
         toggle.addEventListener('change', function () {
           document.body.classList.toggle('dark');
@@ -83,6 +91,25 @@
 
           // Toggle the visibility of the sleeping box based on the toggle state
           sleepingBoxContainer.style.visibility = toggle.checked ? 'visible' : 'hidden';
+
+          // Select the speaker element
+          var speaker = document.querySelector('.speaker');
+          speaker.classList.toggle('lightSpeaker', toggle.checked);
+        });
+
+        //MUSIC TOGGLE
+        var musicPlayer = document.querySelector('.speaker input[type="checkbox"]');
+        let audio = new Audio('audio/music1.mp3');
+        musicPlayer.addEventListener('change', function () {
+          if (musicPlayer.checked) {
+    
+            // Play the audio
+            audio.play();
+          } else {
+            // If the checkbox is not checked, pause the audio (if it's playing)
+            audio.pause();
+          }
         });
       </script>
+
       <script src='scripts/pet_status_display.js'></script>
