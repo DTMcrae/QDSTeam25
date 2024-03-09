@@ -1,0 +1,26 @@
+<%- include("templates/header") %>
+    <div class="register_pet_type_title text-center">
+        <h1>Step 1</h1>
+        <h1>Pick your Pet</h1>
+    </div>
+    <form action='/register_pet_type_submit' method='post' class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <div class="my-3">
+            <div class="form-check">
+              <input id="cat" name="petType" type="radio" class="form-check-input" value="cat" checked="" required="">
+              <label class="form-check-label" for="cat">Cat</label>
+            </div>
+            <div class="form-check">
+              <input id="dog" name="petType" type="radio" class="form-check-input" value="dog" required="">
+              <label class="form-check-label" for="dog">Dog</label>
+            </div>
+            <div class="form-check">
+              <input id="pig" name="petType" type="radio" class="form-check-input" value="pig" required="">
+              <label class="form-check-label" for="pig">Pig</label>
+            </div>
+            <div class="form-check">
+                <input id="sheep" name="petType" type="radio" class="form-check-input" value="sheep" required="">
+                <label class="form-check-label" for="sheep">Sheep</label>
+            </div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Confirm</button>
+    </form>

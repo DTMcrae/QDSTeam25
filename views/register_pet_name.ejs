@@ -1,0 +1,12 @@
+<%- include("templates/header") %>
+    <div class="register_pet_type_title text-center">
+        <h1>Step 2</h1>
+        <h1>Name your pet</h1>
+    </div>
+    <form action='/register_pet_name_submit' method='post' class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <input type="hidden" name="petType" value="<%= pet_type %>">
+        <div class="my-3">
+            <input type="text" class="form-control" name="petName" placeholder="Type your pet name" value="" required="">
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Create my pet!</button>
+    </form>

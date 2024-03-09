@@ -30,6 +30,7 @@ const node_session_secret = process.env.NODE_SESSION_SECRET;
 let { database } = include("databaseConnection");
 
 const userCollection = database.db(mongodb_database).collection("users");
+const petCollection = database.db(mongodb_database).collection("pets");
 
 app.set("view engine", "ejs");
 
@@ -71,6 +72,23 @@ app.get("/main", (req, res) => {
   res.render("main");
 });
 
+app.get("/register_pet_type", (req, res) => {
+    if (!req.session.authenticated) {
+        res.redirect("/");
+        return;
+    }
+    res.render("register_pet_type");
+});
+
+app.get("/register_pet_name", (req, res) => {
+    const pet_type = req.query.pet_type;
+    res.render("register_pet_name", {pet_type: pet_type});
+});
+
+app.get("/register_schedule", (req, res) => {
+    res.render("register_schedule");
+});
+
 app.post("/signupSubmit", async (req, res) => {
   // Logic for handling the signup-submit route and processing the signup form submission
   let password = req.body.password;
@@ -105,13 +123,24 @@ app.post("/signupSubmit", async (req, res) => {
   });
   console.log("Inserted user");
 
+  const result = await userCollection
+    .find({ email: email })
+    .project({
+      _id: 1,
+      password: 1,
+    })
+    .toArray();
+
+  const uid = result[0]._id;
+
   // Create a session
   req.session.authenticated = true;
   req.session.email = email;
   req.session.cookie.maxAge = expireTime;
+  req.session.userId = uid;
 
   // redirect the user to the / page.
-  res.redirect("/");
+  res.redirect("/register_pet_type");
 });
 
 app.post("/loginSubmit", async (req, res) => {
@@ -126,7 +155,7 @@ app.post("/loginSubmit", async (req, res) => {
     })
     .toArray();
 
-  let uid = result[0]._id;
+  const uid = result[0]._id;
   await userCollection.updateOne(
     { _id: new ObjectId(uid) },
     { $set: { last_time_logged_in: new Date() } }
@@ -136,8 +165,37 @@ app.post("/loginSubmit", async (req, res) => {
   req.session.authenticated = true;
   req.session.email = email;
   req.session.cookie.maxAge = expireTime;
+  req.session.userId = uid;
 
   res.redirect("/");
+});
+
+app.post("/register_pet_type_submit", async (req, res) => {
+    const pet_type = req.body.petType;
+    console.log("pet_type: "+pet_type);
+
+    res.redirect(`/register_pet_name?pet_type=${pet_type}`);
+});
+
+app.post("/register_pet_name_submit", async (req, res) => {
+    const pet_name = req.body.petName;
+    const pet_type = req.body.petType;
+    const uid = req.session.userId;
+
+    try {
+        await petCollection.insertOne({
+            user_id: uid,
+            pet_type: pet_type,
+            name: pet_name,
+        });
+        console.log("Inserted pet");
+
+        res.redirect(`/register_schedule`);
+    } catch (error) {
+        console.error("Error inserting pet: ", error);
+        res.status(500).send("An error occurred");
+    }
+
 });
 
 app.get("/logout", (req, res) => {
