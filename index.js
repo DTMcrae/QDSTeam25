@@ -71,19 +71,11 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/main", async (req, res) => {
-    const uid = req.session.userId;
-    try {
-        // Assuming each user has one pet for simplicity
-        const pet = await petCollection.findOne({ user_id: uid });
-
-        if (!pet) {
-            return res.status(404).send('Pet not found');
-        }
-        res.render('main', { pet: pet });
-    } catch (error) {
-        console.error("Error fetching pet: ", error);
-        res.status(500).send("An error occurred");
+    if (!req.session.authenticated) {
+        res.redirect("/");
+        return;
     }
+    res.render("main");
 });
 
 app.get("/register_pet_type", (req, res) => {
