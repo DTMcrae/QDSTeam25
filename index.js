@@ -4,6 +4,7 @@ const url = require('url');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const {ObjectId} = require("mongodb");
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 
@@ -89,7 +90,7 @@ app.post('/signupSubmit', async (req, res) => {
     // If inputs are valid, add the member
     let hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    await userCollection.insertOne({email: email, password: hashedPassword});
+    await userCollection.insertOne({email: email, password: hashedPassword, last_time_logged_in: new Date()});
     console.log("Inserted user");
 
     // Create a session
@@ -106,9 +107,14 @@ app.post('/loginSubmit', async (req, res) => {
     let email = req.body.email;
 
     const result = await userCollection.find({email: email}).project({
-        password: 1,
-        _id: 1
+        _id: 1,
+        password: 1
     }).toArray();
+
+    let uid = result[0]._id;
+    await userCollection.updateOne({_id: new ObjectId(uid)}, {$set: {last_time_logged_in: new Date()}});
+    console.log("Updated last_time_logged_in");
+
     req.session.authenticated = true;
     req.session.email = email;
     req.session.cookie.maxAge = expireTime;
