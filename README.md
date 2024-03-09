@@ -92,21 +92,29 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/DTMcrae/QDSTeam25
    ```
-3. Install NPM packages
+3. From the project directory, install NPM packages
    ```sh
+   cd /QDSTeam25
    npm install
    ```
-4. Enter your API in `config.js`
+4. Add a .env file into the root folder with the following 
    ```js
-   const API_KEY = 'ENTER YOUR API';
+    MONGODB_HOST=cluster0.irbsxph.mongodb.net
+    MONGODB_USER=myr9901
+    MONGODB_PASSWORD=1234
+    MONGODB_DATABASE=qds2024
+    MONGODB_SESSION_SECRET=e022cbbd-3c0b-4d94-bf69-934ce0473a76
+    NODE_SESSION_SECRET=fc153adb-a901-457f-a65a-fe08d8474f67
    ```
+5. Start the project
+   ```sh
+   node index.js
+   ```
+6. On a browser, navigate to http://localhost:3000/ to view the app.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
