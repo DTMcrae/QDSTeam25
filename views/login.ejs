@@ -1,14 +1,27 @@
 <%- include("templates/header") %>
     <h1>Log in</h1>
     <form action='/loginSubmit' method='post' class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+
+      
+        <div class="form-indication">
+        <p>Email address</p>
+        </div>
+
         <div class="form-floating mb-3">
           <input name="email" type="email" class="form-control" id="floatingEmail" placeholder="Email">
           <label for="floatingEmail">Email</label>
+        </div>
+
+        <div class="form-indication">
+          <p>Password</p>
         </div>
         <div class="form-floating mb-3">
           <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+
+        <button class="w-100 btn btn-lg btn-primary" style="margin-bottom: 15px; background-color: #604BFF" type="submit">Submit</button>
+
+        <p>Need to register? Sign up <a href ="">here</a></p>
     </form>
 <%- include("templates/footer") %>
