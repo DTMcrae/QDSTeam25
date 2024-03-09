@@ -25,33 +25,33 @@ Index 0: Hunger
 Index 1: Energy
 Index 2: Happiness
 */
-function calculateStats() {
+function calculateStats(last_login, hunger, energy, happniness) {
     //Temp last login var
-    var last_login = new Date(year=2024,monthIndex=2,date=8,hours=22,minutes=15);
+    // var last_login = new Date(year=2024,monthIndex=2,date=8,hours=22,minutes=15);
     var hours = hoursPassed(last_login,new Date(getDateStr()));
     console.log("Hours passed: " + hours);
     return [
-        determineHunger(hours),
-        determineEnergy(hours),
-        determineHappiness(hours)
+        determineHunger(hours, hunger),
+        determineEnergy(hours, energy),
+        determineHappiness(hours, happniness)
         ]
 }
 
 // Calculates the pet's happiness after the given hours have passed.
-function determineHappiness(hoursPassed) {
-    var currentHappiness = 100;
+function determineHappiness(hoursPassed, currentHappiness) {
+    // var currentHappiness = 100;
     return Math.round(currentHappiness - (hoursPassed * happinessDecayRate));
 }
 
 // Calculates the pet's hunger after the given hours have passed.
-function determineHunger(hoursPassed) {
-    var currentHunger = 100;
+function determineHunger(hoursPassed, currentHunger) {
+    // var currentHunger = 100;
     return Math.round(currentHunger - (hoursPassed * hungerDecayRate));
 }
 
 // Calculates the pet's energy after the given hours have passed.
-function determineEnergy(hoursPassed) {
-    var currentEnergy = 75;
+function determineEnergy(hoursPassed, currentEnergy) {
+    // var currentEnergy = 75;
     var asleep = false;
     if(asleep) {
         return currentEnergy + (hoursPassed * sleepRestoreRate);
