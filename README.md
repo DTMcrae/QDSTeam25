@@ -8,14 +8,13 @@
   <h3 align="center">Studopet</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Your daily routine companion. Project made for QDS Hacks 2024
     <br />
     <br />
     <br />
-    <a href="https://youtube.com/LINKHERE">View Demo</a>
+    <a href="https://youtube.com/LINKHERE">View YouTube Demo</a>
     ·
     <a href="https://devpost.com/software/studopet">DevPost Submission</a>
-    ·
   </p>
 </div>
 
