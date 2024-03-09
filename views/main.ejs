@@ -99,14 +99,26 @@
 
         //MUSIC TOGGLE
         var musicPlayer = document.querySelector('.speaker input[type="checkbox"]');
-        let audio = new Audio('audio/music1.mp3');
+        const songs = ['audio/music1.mp3', 'audio/music2.mp3', 'audio/music3.mp3']
+        let currentSongIndex = 0;
+
+        let audio = new Audio(songs[currentSongIndex]);
+
+        // Function to play the next song
+        function playNextSong() {
+          currentSongIndex = (currentSongIndex + 1) % songs.length; 
+          audio.src = songs[currentSongIndex]; 
+          audio.play();
+        }
+
+        // Event listener for the ended event, to play the next song
+        audio.addEventListener('ended', playNextSong);
+
+        // Event listener for the musicPlayer checkbox
         musicPlayer.addEventListener('change', function () {
           if (musicPlayer.checked) {
-    
-            // Play the audio
             audio.play();
           } else {
-            // If the checkbox is not checked, pause the audio (if it's playing)
             audio.pause();
           }
         });
