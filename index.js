@@ -1,8 +1,9 @@
 require("./utils.js");
-
+require('dotenv').config();
 const url = require('url');
 const express = require('express');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
 
@@ -14,9 +15,39 @@ const Joi = require("joi");
 
 const expireTime = 1 * 60 * 60 * 1000; //expires after 1 hour  (hours * minutes * seconds * millis)
 
+/* secret information section */
+const mongodb_host = process.env.MONGODB_HOST;
+const mongodb_user = process.env.MONGODB_USER;
+const mongodb_password = process.env.MONGODB_PASSWORD;
+const mongodb_database = process.env.MONGODB_DATABASE;
+const mongodb_session_secret = process.env.MONGODB_SESSION_SECRET;
+
+const node_session_secret = process.env.NODE_SESSION_SECRET;
+
+/* END secret section */
+
+let {database} = include('databaseConnection');
+
+const userCollection = database.db(mongodb_database).collection('users');
+
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({extended: false})); //middle ware
+
+var mongoStore = MongoStore.create({
+    mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/${mongodb_database}`,
+    crypto: {
+      secret: mongodb_session_secret
+    }
+  });
+  
+  app.use(session({
+      secret: node_session_secret,
+      store: mongoStore, //default is memory store
+      saveUninitialized: false,
+      resave: true
+    }
+  ));
 
 app.get('/', (req,res) => {
     if (!req.session.authenticated) {
@@ -34,44 +65,41 @@ app.get('/login', (req,res) => {
     res.render("login");
 });
 
-// app.post('/signupSubmit', async (req, res) => {
-//     var username = req.body.username;
-//     var password = req.body.password;
+app.post('/signupSubmit', async (req, res) => {
+    // Logic for handling the signup-submit route and processing the signup form submission
+  let password = req.body.password;
+  let email = req.body.email?.trim();
 
-//     const schema = Joi.object({
-//         username: Joi.string().alphanum().min(3).max(20).required(),
-//         password: Joi.string().min(10).max(20)
-//         .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/)
-//         .message('Password must include at least one uppercase letter, one lowercase letter, one number, and one special character')
-//         .required() // Ensure passwords are strong
-//     });
+  if (req.session.authenticated) {
+    res.redirect('/');
+    return;
+  }
 
-//     const validationResult = schema.validate({ username, password });
-//     if (validationResult.error != null) {
-//         const errorMessage = validationResult.error.message;
-//         console.log(validationResult.error);
-//         res.render("signupError", { errorMessage: errorMessage });
-//         return;
-//     }
+  // check if the id already exists
+  const emailCheck = await userCollection.find({email: email}).project({_id: 1}).toArray();
 
-//     try {
-//         const hashedPassword = await bcrypt.hash(password, saltRounds);
+  if (emailCheck.length > 0) {
+    res.render('signup-submit', {
+      signupFail: true,
+      errorMessage: `This email already exists. \n Please choose a different email.`
+    });
+    return;
+  }
 
-//         // Using MySQL's parameterized query feature to prevent SQL injection
-//         const [result] = await database.execute(
-//             'INSERT INTO user (username, password) VALUES (?, ?)',
-//             [username, hashedPassword]
-//         );
+  // If inputs are valid, add the member
+  let hashedPassword = await bcrypt.hash(password, saltRounds);
 
-//         req.session.authenticated = true;
-//         req.session.name = username;
-//         req.session.cookie.maxAge = expireTime;
-//         res.redirect('/chats');
-//     } catch (error) {
-//         console.error("Error inserting user:", error.message);
-//         res.render("signupError", { errorMessage: "Error creating your account." });
-//     }
-// });
+  await userCollection.insertOne({email: email, password: hashedPassword});
+  console.log("Inserted user");
+
+  // Create a session
+  req.session.authenticated = true;
+  req.session.email = email;
+  req.session.cookie.maxAge = expireTime;
+
+  // redirect the user to the / page.
+  res.redirect('/');
+});
 
 // app.post('/loginSubmit', async (req, res) => {
 //     const { username, password } = req.body;
