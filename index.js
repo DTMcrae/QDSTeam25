@@ -70,8 +70,20 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.get("/main", (req, res) => {
-  res.render("main");
+app.get("/main", async (req, res) => {
+    const uid = req.session.userId;
+    try {
+        // Assuming each user has one pet for simplicity
+        const pet = await petCollection.findOne({ user_id: uid });
+
+        if (!pet) {
+            return res.status(404).send('Pet not found');
+        }
+        res.render('main', { pet: pet });
+    } catch (error) {
+        console.error("Error fetching pet: ", error);
+        res.status(500).send("An error occurred");
+    }
 });
 
 app.get("/register_pet_type", (req, res) => {
@@ -174,7 +186,6 @@ app.post("/loginSubmit", async (req, res) => {
 
 app.post("/register_pet_type_submit", async (req, res) => {
     const pet_type = req.body.petType;
-    console.log("pet_type: "+pet_type);
 
     res.redirect(`/register_pet_name?pet_type=${pet_type}`);
 });
@@ -189,6 +200,9 @@ app.post("/register_pet_name_submit", async (req, res) => {
             user_id: uid,
             pet_type: pet_type,
             name: pet_name,
+            energy: 75,
+            hunger: 75,
+            happiness: 100
         });
         console.log("Inserted pet");
 
@@ -229,8 +243,12 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static("public"));
 app.use('/scripts', express.static("public/scripts"));
 
-app.get(`/api/stats`, (req,res) => {
-    res.json(stats.calculateStats());
+app.get(`/api/stats`, async(req,res) => {
+    const uid = req.session.userId;
+    const pet = await petCollection.findOne({ user_id: uid });
+    const user = await userCollection.findOne({ _id: new ObjectId(uid) });
+
+    res.json(stats.calculateStats(user.last_time_logged_in, pet.energy, pet.hunger, pet.happiness));
 })
 
 app.get("*", (req, res) => {
