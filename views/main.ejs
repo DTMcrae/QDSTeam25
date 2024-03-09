@@ -36,7 +36,9 @@
         </div>
       </div>
       <div class="row">
-        <div class="sleeping-box">Sleeping</div>
+        <div class="sleeping-box">
+          <img src="../images/moon.png" id="moon">Sleeping
+        </div>
       </div>
       <div class="row">
         <div class="pet">Your Pet</div>
@@ -94,7 +96,8 @@
 
           // Select the speaker element
           var speaker = document.querySelector('.speaker');
-          speaker.classList.toggle('lightSpeaker', toggle.checked);
+          console.log(toggle.checked)
+          updateSpeakerImage(musicPlayer.checked, toggle.checked)
         });
 
         //MUSIC TOGGLE
@@ -106,20 +109,38 @@
 
         // Function to play the next song
         function playNextSong() {
-          currentSongIndex = (currentSongIndex + 1) % songs.length; 
-          audio.src = songs[currentSongIndex]; 
+          currentSongIndex = (currentSongIndex + 1) % songs.length;
+          audio.src = songs[currentSongIndex];
           audio.play();
         }
 
         // Event listener for the ended event, to play the next song
         audio.addEventListener('ended', playNextSong);
 
+        function updateSpeakerImage(playing, lightsOff) {
+          var speaker = document.querySelector('.speaker');
+          if (playing) {
+            if (lightsOff) {
+              speaker.style.backgroundImage = 'url(\'../images/SpeakerW.png\')';
+            } else {
+              speaker.style.backgroundImage = 'url(\'../images/SpeakerD.png\')';
+            }
+          } else { //not playing 
+            if (lightsOff) {
+              speaker.style.backgroundImage = 'url(\'../images/SpeakerWOff.png\')';
+            } else {
+              speaker.style.backgroundImage = 'url(\'../images/SpeakerDOff.png\')';
+            } 
+          }
+        }
         // Event listener for the musicPlayer checkbox
         musicPlayer.addEventListener('change', function () {
           if (musicPlayer.checked) {
             audio.play();
+            updateSpeakerImage(true, toggle.checked);
           } else {
             audio.pause();
+            updateSpeakerImage(false, toggle.checked);
           }
         });
       </script>

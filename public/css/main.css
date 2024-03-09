@@ -169,15 +169,12 @@ body {
   display: inline-block;
   width: 40px;
   height: 30px;
-  background-image: url('../images/SpeakerDark.png');
-  background-size: cover;
+  background-image: url('../images/SpeakerDOff.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
-.lightSpeaker{
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 30px;
-  background-image: url('../images/SpeakerWhite.png');
-  background-size: cover;
+#moon{
+  margin-right: 5px;
 }
