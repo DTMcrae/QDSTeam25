@@ -1,28 +1,69 @@
 <%- include("templates/header") %>
-<link rel="stylesheet" href="css/main.css" />
-<div class="row">
-  <div class="stats-column">Hunger</div>
-  <div class="stats-column">Energy</div>
-  <div class="stats-column">Happiness</div>
-</div>
-<div class="row"><div class="pet">Your Pet</div></div>
-<div class="row">
-  <div class="pet-info">
-    <div class="pet-name">Pet Name</div>
-    <div class="pet-age">Pet Age</div>
-  </div>
-</div>
-<div class="row">
-  <div class="action-column">Feed</div>
-  <div class="action-column">Play</div>
-  <div class="action-column">
-    <div>
-      <label class="switch">
-        <input type="checkbox" />
-        <span class="slider round"></span>
-      </label>
-    </div>
-    <div>Lights Out</div>
-  </div>
-  <div class="action-column">Music</div>
-</div>
+
+  <body>
+    <%- include("templates/libraries") %>
+      <link rel="stylesheet" href="css/main.css" />
+      <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <span class="fs-4 studopet">STUDOPET</span>
+          </a>
+        </header>
+      </div>
+      <div class="container"></div>
+
+      <div class="row">
+        <div class="stats-column">Hunger</div>
+        <div class="stats-column">Energy</div>
+        <div class="stats-column">Happiness</div>
+      </div>
+      <div class="row">
+        <div class="sleeping-box">Sleeping</div>
+      </div>
+      <div class="row">
+        <div class="pet">Your Pet</div>
+      </div>
+      <div class="row">
+        <div class="pet-info">
+          <div class="pet-name">Pet Name</div>
+          <div class="pet-age">Pet Age</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="action-column">Feed</div>
+        <div class="action-column">Play</div>
+        <div class="action-column">
+          <div>
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider round" id="switch"></span>
+            </label>
+          </div>
+          <div id="lightsText">Lights Out</div>
+        </div>
+        <div class="action-column">Music</div>
+      </div>
+      <script>
+        // Function to toggle dark mode class on the body element
+        var toggle = document.querySelector('.switch input[type="checkbox"]');
+        toggle.addEventListener('change', function () {
+          document.body.classList.toggle('dark');
+          // Select the element
+          var studopetElement = document.querySelector('.studopet');
+
+          // Add a class to the element
+          studopetElement.classList.toggle('dark');
+
+          //change LIGHTS text
+          lightsText.textContent = toggle.checked ? 'Lights On' : 'Lights Out';
+
+          // Select the sleeping box container
+          var sleepingBoxContainer = document.querySelector('.sleeping-box');
+
+          //change text
+          lightsText.textContent = toggle.checked ? 'Lights On' : 'Lights Out';
+
+          // Toggle the visibility of the sleeping box based on the toggle state
+          sleepingBoxContainer.style.visibility = toggle.checked ? 'visible' : 'hidden';
+        });
+      </script>

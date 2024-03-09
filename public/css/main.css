@@ -89,6 +89,7 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
@@ -96,4 +97,36 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.dark {
+  /* background-image: url('bgdark.png'); */
+  background-color: #312e2e;
+  color: white; /* White text color for better contrast */
+}
+
+body {
+  transition: background-color 0.5s ease; 
+}
+
+.studopet {
+ background-color: transparent;
+}
+
+.sleeping-box {
+  background-color: #f1f1f1; 
+  color: #333; 
+  padding: 1px 1px; 
+  border-radius: 8px; 
+  visibility: hidden;
+  width: 100px;
+  height: 30px;
+  margin: 25px auto 0 auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: #0065d0;
+  background-color: #C9F0FF;
+  font-weight: 600;
+  line-height: 2
 }
