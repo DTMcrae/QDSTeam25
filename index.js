@@ -97,7 +97,7 @@ app.post("/signupSubmit", async (req, res) => {
   let email = req.body.email?.trim();
 
   if (req.session.authenticated) {
-    res.redirect("/");
+    res.redirect("/register_pet_type");
     return;
   }
 
