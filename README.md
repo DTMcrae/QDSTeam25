@@ -11,7 +11,6 @@
     Your daily routine companion. Project made for QDS Hacks 2024
     <br />
     <br />
-    <br />
     <a href="https://youtube.com/LINKHERE">View YouTube Demo</a>
     ·
     <a href="https://devpost.com/software/studopet">DevPost Submission</a>
@@ -37,7 +36,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -86,15 +84,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+Follow these steps to get the project installed and running locally. 
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 ### Installation
 
@@ -117,18 +111,6 @@ _Below is an example of how you can instruct your audience on installing and set
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -147,9 +129,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTACT -->
 ## Contact
 
-- Your Name - email@example.com - 3rd term CST 
-- Your Name - email@example.com - 3rd term CST 
-- Your Name - email@example.com - 3rd term CST 
+- Your Name - email@example.com
+- Your Name - email@example.com 
+- Your Name - email@example.com
+- Your Name - email@example.com 
+- Your Name - email@example.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -158,15 +142,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
 * [W3 Schools Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
