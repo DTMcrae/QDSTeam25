@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
   if (!req.session.authenticated) {
     res.render("index_noLogIn");
   } else {
-    res.render("index_loggedIn", { req: req });
+    res.render("main", { req: req });
   }
 });
 
@@ -93,7 +93,7 @@ app.get("/register_schedule", (req, res) => {
 
 app.post("/signupSubmit", async (req, res) => {
   // Logic for handling the signup-submit route and processing the signup form submission
-  let password = req.body.password;
+  let password = req.body.passwordConfirmed;
   let email = req.body.email?.trim();
 
   if (req.session.authenticated) {
@@ -169,7 +169,7 @@ app.post("/loginSubmit", async (req, res) => {
   req.session.cookie.maxAge = expireTime;
   req.session.userId = uid;
 
-  res.redirect("/");
+  res.redirect("/main");
 });
 
 app.post("/register_pet_type_submit", async (req, res) => {
@@ -198,6 +198,26 @@ app.post("/register_pet_name_submit", async (req, res) => {
         res.status(500).send("An error occurred");
     }
 
+});
+
+app.post("/register_schedule_submit", async (req, res) => {
+    const sleepTime = req.body.sleepTime;
+    const wakeTime = req.body.wakeTime;
+    const uid = req.session.userId;
+
+    try {
+        await userCollection.updateOne(
+            { _id: new ObjectId(uid) },
+            { $set: { sleep_time: sleepTime, wake_time:wakeTime } }
+        );
+        console.log("Updated schedule");
+
+        res.redirect(`/main`);
+    } catch (error) {
+        console.error("Error updating schedule: ", error);
+        res.status(500).send("An error occurred");
+    }
+   
 });
 
 app.get("/logout", (req, res) => {
