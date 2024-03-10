@@ -2,13 +2,36 @@
 <link rel="stylesheet" href="css/phone-wider.css" />
 <link rel="stylesheet" href="css/fonts.css" />
 <link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/menu.css" />
 
 <body>
   <div class="phone">
     <div class="phone-container" id="phone-container">
       <div style="height: 30px"></div>
       <div class="top-header">
-        <Button id="menu"></Button>
+        <!-- <Button id="menu"></Button> -->
+        <div class="hamburger-menu">
+          <input id="menu__toggle" type="checkbox" />
+          <label class="menu__btn" for="menu__toggle">
+            <span></span>
+          </label>
+
+          <ul class="menu__box">
+            <div class="menu-header">Menu</div>
+            <div class="user-info">user@gmail.com</div>
+            <li>
+              <a class="menu__item" href="#"
+                ><img src="/images/clock-cog.png" class="menu-icon" />Sleep
+                Settings</a
+              >
+            </li>
+            <li>
+              <a class="menu__item" href="#"
+                ><img src="/images/logout.png" class="menu-icon" />Logout</a
+              >
+            </li>
+          </ul>
+        </div>
         <div id="logo">Studopet</div>
         <div></div>
       </div>
