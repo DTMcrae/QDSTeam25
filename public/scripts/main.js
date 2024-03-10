@@ -36,41 +36,6 @@ function updateStyles(darkMode) {
   }
 }
 
-//SLEEPING TOGGLE
-var toggle = document.querySelector('.switch input[type="checkbox"]');
-toggle.addEventListener("change", function () {
-  darkMode = !darkMode;
-  updateStyles(darkMode);
-
-  //change LIGHTS text
-  lightsText.innerHTML = toggle.checked
-    ? "Lights &nbsp;&nbsp;&nbsp;&nbsp;On"
-    : "Lights &nbsp;&nbsp;&nbsp;Out";
-
-  // Select the sleeping box container
-  var sleepingBoxContainer = document.querySelector(".sleeping-box");
-
-  // Toggle the visibility of the sleeping box based on the toggle state
-  sleepingBoxContainer.style.visibility = toggle.checked ? "visible" : "hidden";
-
-  // Select the speaker element
-  var speaker = document.querySelector(".speaker");
-  console.log(toggle.checked);
-  updateSpeakerImage(musicPlayer.checked, toggle.checked);
-
-  //toggle meat icon
-  var meat = document.querySelector(".feed");
-  meat.style.backgroundImage = toggle.checked
-    ? "url('../images/meatW.png')"
-    : "url('../images/meat.png')";
-
-  //toggle soccer icon
-  var soccer = document.querySelector(".play");
-  soccer.style.backgroundImage = toggle.checked
-    ? "url('../images/soccerW.png')"
-    : "url('../images/soccer.png')";
-});
-
 //MUSIC TOGGLE
 var musicPlayer = document.querySelector('.speaker input[type="checkbox"]');
 const songs = ["audio/music1.mp3", "audio/music2.mp3", "audio/music3.mp3"];
@@ -141,3 +106,53 @@ playButton.addEventListener("click", async () => {
     console.error("Error:", error);
   }
 });
+
+//SLEEPING TOGGLE
+var toggle = document.querySelector('.switch input[type="checkbox"]');
+toggle.addEventListener("change", toggleTheme);
+
+function toggleTheme() {
+  darkMode = !darkMode;
+  updateStyles(darkMode);
+
+  //change LIGHTS text
+  lightsText.innerHTML = toggle.checked
+    ? "Lights &nbsp;&nbsp;&nbsp;&nbsp;On"
+    : "Lights &nbsp;&nbsp;&nbsp;Out";
+
+  // Select the sleeping box container
+  var sleepingBoxContainer = document.querySelector(".sleeping-box");
+
+  // Toggle the visibility of the sleeping box based on the toggle state
+  sleepingBoxContainer.style.visibility = toggle.checked ? "visible" : "hidden";
+
+  // Select the speaker element
+  var speaker = document.querySelector(".speaker");
+  updateSpeakerImage(musicPlayer.checked, toggle.checked);
+
+  //toggle meat icon
+  var meat = document.querySelector(".feed");
+  meat.style.backgroundImage = toggle.checked
+    ? "url('../images/meatW.png')"
+    : "url('../images/meat.png')";
+
+  //toggle soccer icon
+  var soccer = document.querySelector(".play");
+  soccer.style.backgroundImage = toggle.checked
+    ? "url('../images/soccerW.png')"
+    : "url('../images/soccer.png')";
+
+    fetch("/api/asleep/?asleep=" + !toggle);
+}
+
+async function sleepState() {
+    const rest = await fetch("/api/asleep");
+    const awake = await rest.json();
+    console.log(awake);
+    if(awake.asleep)
+    {
+        toggle.checked = true;
+        toggleTheme();
+    }
+}
+sleepState()
