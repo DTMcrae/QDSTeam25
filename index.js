@@ -264,6 +264,13 @@ app.post("/register_schedule_submit", async (req, res) => {
    
 });
 
+app.get("/reschedule", async (req,res) => {
+  const uid = req.session.userId;
+  const user = await userCollection.findOne({ _id: new ObjectId(uid) });
+  console.log("Wake:" + user.wake_time);
+  res.render("change_schedule", {sleep: user.sleep_time, wake: user.wake_time});
+});
+
 app.post("/update_schedule_submit", async (req, res) => {
     const sleepTime = req.body.sleepTime;
     const wakeTime = req.body.wakeTime;
