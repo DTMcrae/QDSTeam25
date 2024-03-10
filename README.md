@@ -15,6 +15,13 @@
     ·
     <a href="https://devpost.com/software/studopet">DevPost Submission</a>
   </p>
+
+<div align= "center">
+ ⭐QDS TEAM 25 ⭐ 
+
+| Leanne Holmes | Phuong Le | Daniel McRae | Yerim Moon | Angela Yu |
+| --------- | ------------- | ----------- |  ----------- | --------- |
+</div>
 </div>
 
 
@@ -30,8 +37,7 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
+      <a href="#getting-started">Getting Started</a> 
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
@@ -45,43 +51,41 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+##  📝About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+The idea for Studopet came from our team's personal experiences as students. We often found it challenging to balance our academic responsibilities with our personal lives, leading to stress and burnout. We realized that having a routine and structure could significantly improve our well-being and productivity.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Studopet offers a fun and effective way to reinforce your routine!
+* 🍖feed your pet to keep it happy and healthy
+* ⚽play with your pet for a refreshing break from studying
+* 💤 when your pet is tired, putting it to bed serves as a gentle reminder to get some rest yourself
+* 🎵 listen to relaxing jams while you study
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+**Personalize** your experience by inputting your own sleep times, making it even more tailored to your schedule and you can also name your pet!
 
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-### Built With
+### 🔨Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## 🏃‍♀️Getting Started
 
 Follow these steps to get the project installed and running locally. 
 
@@ -119,13 +123,13 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 
 <!-- ROADMAP -->
-## Roadmap
+##  🗺️Roadmap
 
 - [x] Created wireframes
 - [x] Setup boilerplate code and database
-- [x] Added authentication
-- [ ]
-- [ ] 
+- [x] Added sign up and authentication
+- [x] Implement progress bars
+- [x] Implement game mechanics
 - [ ] Multi-language Support
     - [ ] Chinese
     - [ ] Spanish
@@ -134,22 +138,28 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 
 <!-- CONTACT -->
-## Contact
+## 🗣 Contact
 
-- Your Name, 3rd term CST student - email@example.com
-- Your Name, - email@example.com 
-- Your Name - email@example.com
-- Your Name - email@example.com 
-- Your Name - email@example.com
+- Leanne Holmes, BScACS Term 5 - leanne.holmes.dev@gmail.com 
+- Phuong Le, CST Term 2 - lttphuong7@gmail.com
+- Daniel McRae, CST Term 3 - dtmcrae0@gmail.com
+- Yerim Moon, CST Term 3- myr9901@gmail.com 
+- Angela Yu, CST Term 3 - angelayu8800@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## 📑Acknowledgments
 
+### CSS
 * [W3 Schools Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp)
+* [Icons](https://icons8.com/)
+
+### Playlist
+* [Song 1](https://www.youtube.com/watch?v=slnUKMhcQUs&t=4s), [Song 2](https://www.youtube.com/watch?v=6DhONAQfEVg), [Song 3](https://www.youtube.com/watch?v=6eWIffP2M3Y)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
