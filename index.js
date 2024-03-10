@@ -75,7 +75,8 @@ app.get("/main", async (req, res) => {
         res.redirect("/");
         return;
     }
-    res.render("main");
+    const pet = await petCollection.findOne({ user_id: req.session.userId });
+    res.render("main", { pet: pet });
 });
 
 app.get("/register_pet_type", (req, res) => {
@@ -126,6 +127,7 @@ app.post("/signupSubmit", async (req, res) => {
     email: email,
     password: hashedPassword,
     last_time_logged_in: new Date(),
+    registered_date: new Date(),
   });
   console.log("Inserted user");
 
@@ -162,6 +164,7 @@ app.post("/loginSubmit", async (req, res) => {
     .toArray();
 
   const uid = result[0]._id;
+
   await userCollection.updateOne(
     { _id: new ObjectId(uid) },
     { $set: { last_time_logged_in: new Date() } }
@@ -270,7 +273,7 @@ app.get(`/api/eat`, async(req,res) => {
 
     console.log("New: " + newHunger);
     //Update Hunger in the database
-
+    
     res.json({result: "fed"});
 })
 

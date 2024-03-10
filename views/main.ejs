@@ -45,7 +45,7 @@
       </div>
       <div class="row">
         <div class="pet-info">
-          <div class="pet-name">Pet Name</div>
+          <div class="pet-name"><%= pet.name %></div>
           <div class="pet-age">Pet Age</div>
         </div>
       </div>
@@ -53,14 +53,14 @@
         <div class="action-column">
           <div>
             <label class="feed">
-              <input type="checkbox">
+              <input type="button" id="feedButton">
             </label>
           </div>Feed
         </div>
         <div class="action-column">
           <div>
             <label class="play">
-              <input type="checkbox">
+              <input type="button" id="playButton">
             </label>
           </div>
           Play
