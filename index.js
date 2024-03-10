@@ -96,6 +96,11 @@ app.get("/register_schedule", (req, res) => {
     res.render("register_schedule");
 });
 
+// test for modal
+app.get("/modal", (req, res) => {
+    res.render("modal");
+});
+
 app.post("/signupSubmit", async (req, res) => {
   // Logic for handling the signup-submit route and processing the signup form submission
   let password = req.body.passwordConfirmed;
