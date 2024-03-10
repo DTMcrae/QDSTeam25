@@ -251,7 +251,7 @@ app.get(`/api/eat`, async(req,res) => {
 
     console.log("New: " + newHunger);
     //Update Hunger in the database
-
+    
     res.json({result: "fed"});
 })
 
