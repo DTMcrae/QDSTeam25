@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/Studopet.png" alt="Logo" width="200">
 
   <h3 align="center">Studopet</h3>
 
@@ -54,8 +54,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ##  📝About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 The idea for Studopet came from our team's personal experiences as students. We often found it challenging to balance our academic responsibilities with our personal lives, leading to stress and burnout. We realized that having a routine and structure could significantly improve our well-being and productivity.
 
@@ -157,6 +155,7 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 ### CSS
 * [W3 Schools Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp)
+* [Hamburger Fold-Out Menu](https://codepen.io/erikterwan/pen/EVzeRP)
 * [Icons](https://icons8.com/)
 
 ### Playlist
