@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="images/Studopet.png" alt="Logo" width="200">
+    <img src="public/images/Studopet.png" alt="Logo" width="200">
 
   <h3 align="center">Studopet</h3>
 
