@@ -63,10 +63,18 @@ app.get("/", (req, res) => {
 });
 
 app.get("/signup", (req, res) => {
+  if (req.session.authenticated) {
+    res.redirect("/main");
+    return;
+  }
   res.render("signup", { error: null });
 });
 
 app.get("/login", (req, res) => {
+  if (req.session.authenticated) {
+    res.redirect("/main");
+    return;
+  }
   res.render("login", { error: null });
 });
 
