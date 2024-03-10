@@ -292,6 +292,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static("public"));
 app.use('/scripts', express.static("public/scripts"));
 
+//Returns an array of pet stats, calculated when logging in
 app.get(`/api/stats`, async(req,res) => {
     const uid = req.session.userId;
     const pet = await petCollection.findOne({ user_id: uid });
@@ -304,6 +305,7 @@ app.get(`/api/stats`, async(req,res) => {
     res.json(results);
 });
 
+//Increases the pet's haunger by feeding with them
 app.get(`/api/eat`, async(req,res) => {
     const uid = req.session.userId;
     const pet = await petCollection.findOne({ user_id: uid });
@@ -317,6 +319,7 @@ app.get(`/api/eat`, async(req,res) => {
     res.json({result: "fed"});
 });
 
+//Increases the pet's happiness by playing with them
 app.get(`/api/play`, async(req,res) => {
     const uid = req.session.userId;
     const pet = await petCollection.findOne({ user_id: uid });
@@ -325,6 +328,47 @@ app.get(`/api/play`, async(req,res) => {
     await petCollection.updateOne({user_id: pet.user_id}, {$set: {happiness: newHappiness}})
 
     res.json({result: "played"});
+});
+
+//Checks if the pet is asleep, and toggles sleep if a tag is given.
+app.get(`/api/asleep`, async(req,res) => {
+    const uid = req.session.userId;
+    var asleep = req.param("asleep");
+    //If no tag is present, check the database to see if asleep or not
+    if(asleep === undefined)
+    {
+        const pet = await petCollection.findOne({user_id: uid});
+
+        if(pet.isAsleep) {
+            res.json({asleep: true});
+            return;
+        }
+        res.json({asleep: false});
+        return;
+    }
+    //Wake the pet up
+    else if (asleep == "true") {
+        petCollection.updateOne({user_id: uid}, {$set: {isAsleep: false}});
+        res.json({asleep: false});
+        return;
+    }
+    //Put the pet to sleep
+    else {
+        petCollection.updateOne({user_id: uid}, {$set: {isAsleep: true}});
+        res.json({asleep: true});
+        return;
+    }
+});
+
+//Gets the current pet's type
+app.get(`/api/pet`, async(req,res) => {
+    const uid = req.session.userId;
+    const pet = await petCollection.findOne({ user_id: uid });
+    if(pet.pet_type === undefined) {
+        res.json({pet: "unknown"});
+        return;
+    }
+    res.json({pet: ((pet.pet_type).charAt(0).toUpperCase() + pet.pet_type.slice(1))});
 });
 
 app.get("*", (req, res) => {
