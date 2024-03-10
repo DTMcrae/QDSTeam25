@@ -283,6 +283,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static("public"));
 app.use('/scripts', express.static("public/scripts"));
 
+//Returns an array of pet stats, calculated when logging in
 app.get(`/api/stats`, async(req,res) => {
     const uid = req.session.userId;
     const pet = await petCollection.findOne({ user_id: uid });
@@ -295,6 +296,7 @@ app.get(`/api/stats`, async(req,res) => {
     res.json(results);
 });
 
+//Increases the pet's haunger by feeding with them
 app.get(`/api/eat`, async(req,res) => {
     const uid = req.session.userId;
     const pet = await petCollection.findOne({ user_id: uid });
@@ -308,6 +310,7 @@ app.get(`/api/eat`, async(req,res) => {
     res.json({result: "fed"});
 });
 
+//Increases the pet's happiness by playing with them
 app.get(`/api/play`, async(req,res) => {
     const uid = req.session.userId;
     const pet = await petCollection.findOne({ user_id: uid });
@@ -316,6 +319,35 @@ app.get(`/api/play`, async(req,res) => {
     await petCollection.updateOne({user_id: pet.user_id}, {$set: {happiness: newHappiness}})
 
     res.json({result: "played"});
+});
+
+app.get(`/api/asleep`, async(req,res) => {
+    const uid = req.session.userId;
+    var asleep = req.param("asleep");
+    //If no tag is present, check the database to see if asleep or not
+    if(asleep === undefined)
+    {
+        const pet = await petCollection.findOne({user_id: uid});
+
+        if(pet.isAsleep) {
+            res.json({asleep: true});
+            return;
+        }
+        res.json({asleep: false});
+        return;
+    }
+    //Wake the pet up
+    else if (asleep == "true") {
+        petCollection.updateOne({user_id: uid}, {$set: {isAsleep: false}});
+        res.json({asleep: false});
+        return;
+    }
+    //Put the pet to sleep
+    else {
+        petCollection.updateOne({user_id: uid}, {$set: {isAsleep: true}});
+        res.json({asleep: true});
+        return;
+    }
 });
 
 app.get("*", (req, res) => {
