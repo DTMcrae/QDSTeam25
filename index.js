@@ -175,7 +175,7 @@ app.post("/loginSubmit", async (req, res) => {
     }
 
     // Verify password
-    const match = await bcrypt.compare(submittedPassword, user.password);
+    const match = await bcrypt.compare(submittedPassword, result[0].password);
 
     const uid = result[0]._id;
     if (match) {
