@@ -1,3 +1,41 @@
-<%- include("templates/header") %> 
-    <h1 class="py-5">Page not found - 404</h1>
-<%- include("templates/footer") %>
+<%- include("templates/header") %>
+<link rel="stylesheet" href="css/phone.css" />
+<link rel="stylesheet" href="css/signup.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+
+<div class="phone">
+  <div class="phone-container">
+    <div style="margin-top: 50px"></div>
+    <h1>Studopet</h1>
+    <div style="text-align: center">
+        <h1 style=" color: #ff4e4e;">Page not found - 404 -</h1>
+    </div>
+    <div>
+      <img src="/images/GuineapigIdle.gif" width="200" style="margin-bottom: -30px" />
+    </div>
+    <div style="margin-top: 30px">
+      <Button class="btn-purple" onClick="toHome()">Back to home</Button>
+    </div>
+    <!-- <div style="margin-top: 10px">
+      <Button class="btn-blue" onClick="toLogin()">Sign In</Button>
+    </div> -->
+    <div
+      style="
+        text-align: center;
+        position: absolute;
+        bottom: 15px;
+        margin-left: 17%;
+        font-size: 8pt;
+        font-weight: 500;
+      "
+    >
+      © Team 25 for QDS 2024
+    </div>
+  </div>
+</div>
+
+<script>
+  function toHome() {
+    window.location.href = "/";
+  }
+</script>
