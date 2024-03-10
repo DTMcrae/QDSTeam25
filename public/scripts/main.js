@@ -17,45 +17,8 @@ imageUrls.forEach(function (url) {
     images.push(img);
 });
 
-
-//SLEEPING TOGGLE
-var toggle = document.querySelector('.switch input[type="checkbox"]');
-toggle.addEventListener('change', function () {
-    document.body.classList.toggle('dark');
-    // Select the element
-    var studopetElement = document.querySelector('.studopet');
-
-    // Add a class to the element
-    studopetElement.classList.toggle('dark');
-
-    //change LIGHTS text
-    lightsText.textContent = toggle.checked ? 'Lights On' : 'Lights Out';
-
-    // Select the sleeping box container
-    var sleepingBoxContainer = document.querySelector('.sleeping-box');
-
-    //change text
-    lightsText.textContent = toggle.checked ? 'Lights On' : 'Lights Out';
-
-    // Toggle the visibility of the sleeping box based on the toggle state
-    sleepingBoxContainer.style.visibility = toggle.checked ? 'visible' : 'hidden';
-
-    // Select the speaker element
-    var speaker = document.querySelector('.speaker');
-    console.log(toggle.checked)
-    updateSpeakerImage(musicPlayer.checked, toggle.checked)
-
-    //toggle meat icon
-    var meat = document.querySelector('.feed')
-    meat.style.backgroundImage = toggle.checked ? 'url(\'../images/meatW.png\')' : 'url(\'../images/meat.png\')';
-
-    //toggle soccer icon
-    var soccer = document.querySelector('.play')
-    soccer.style.backgroundImage = toggle.checked ? 'url(\'../images/soccerW.png\')' : 'url(\'../images/soccer.png\')';
-});
-
 //MUSIC TOGGLE
-var musicPlayer = document.querySelector('.speaker input[type="checkbox"]');
+const musicPlayer = document.querySelector('.speaker input[type="checkbox"]');
 const songs = ['audio/music1.mp3', 'audio/music2.mp3', 'audio/music3.mp3']
 let currentSongIndex = 0;
 
@@ -123,3 +86,56 @@ playButton.addEventListener('click', async () => {
         console.error('Error:', error);
     }
 });
+
+//SLEEPING TOGGLE
+var toggle = document.querySelector('.switch input[type="checkbox"]');
+toggle.addEventListener('change', toggleTheme);
+
+function toggleTheme() {
+    document.body.classList.toggle('dark');
+    // Select the element
+    var studopetElement = document.querySelector('.studopet');
+
+    // Add a class to the element
+    studopetElement.classList.toggle('dark');
+
+    //change LIGHTS text
+    lightsText.textContent = toggle.checked ? 'Lights On' : 'Lights Out';
+
+    // Select the sleeping box container
+    var sleepingBoxContainer = document.querySelector('.sleeping-box');
+
+    //change text
+    lightsText.textContent = toggle.checked ? 'Lights On' : 'Lights Out';
+
+    // Toggle the visibility of the sleeping box based on the toggle state
+    sleepingBoxContainer.style.visibility = toggle.checked ? 'visible' : 'hidden';
+
+    // Select the speaker element
+    var speaker = document.querySelector('.speaker');
+    console.log(toggle.checked)
+    updateSpeakerImage(musicPlayer.checked, toggle.checked)
+
+    //toggle meat icon
+    var meat = document.querySelector('.feed')
+    meat.style.backgroundImage = toggle.checked ? 'url(\'../images/meatW.png\')' : 'url(\'../images/meat.png\')';
+
+    //toggle soccer icon
+    var soccer = document.querySelector('.play')
+    soccer.style.backgroundImage = toggle.checked ? 'url(\'../images/soccerW.png\')' : 'url(\'../images/soccer.png\')';
+
+    //set pet to asleep
+    fetch("/api/asleep/?asleep=" + !toggle.checked);
+}
+
+async function sleepState() {
+    const rest = await fetch("/api/asleep");
+    const awake = await rest.json();
+    console.log(awake);
+    if(awake.asleep)
+    {
+        toggle.checked = true;
+        toggleTheme();
+    }
+}
+sleepState()
