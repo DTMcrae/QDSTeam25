@@ -88,20 +88,32 @@ app.get("/main", async (req, res) => {
     res.render("main", { pet: pet, user: user });
 });
 
-app.get("/register_pet_type", (req, res) => {
-    if (!req.session.authenticated) {
+app.get("/register_pet_type", async (req, res) => {
+    const uid = req.session.userId;
+    const pet = await petCollection.findOne({ user_id: uid });
+    if (!req.session.authenticated || pet !== null) {
         res.redirect("/");
         return;
     }
     res.render("register_pet_type");
 });
 
-app.get("/register_pet_name", (req, res) => {
+app.get("/register_pet_name", async (req, res) => {
     const pet_type = req.query.pet_type;
+    const uid = req.session.userId;
+    const pet = await petCollection.findOne({ user_id: uid });
+    if (!req.session.authenticated || pet !== null) {
+        res.redirect("/");
+        return;
+    }
     res.render("register_pet_name", {pet_type: pet_type});
 });
 
-app.get("/register_schedule", (req, res) => {
+app.get("/register_schedule", async (req, res) => {
+    if (!req.session.authenticated) {
+        res.redirect("/");
+        return;
+    }
     res.render("register_schedule");
 });
 
@@ -265,6 +277,10 @@ app.post("/register_schedule_submit", async (req, res) => {
 });
 
 app.get("/reschedule", async (req,res) => {
+  if (!req.session.authenticated) {
+    res.redirect("/");
+    return;
+  }
   const uid = req.session.userId;
   const user = await userCollection.findOne({ _id: new ObjectId(uid) });
   console.log("Wake:" + user.wake_time);
