@@ -178,3 +178,33 @@ body {
 #moon{
   margin-right: 5px;
 }
+
+.feed input{
+  display:none;
+}
+
+.feed{
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 30px;
+  background-image: url('../images/meat.png'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.play input{
+  display:none; 
+}
+
+.play{
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 30px;
+  background-image: url('../images/soccer.png'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
