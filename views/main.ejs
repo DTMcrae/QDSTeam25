@@ -1,50 +1,44 @@
 <%- include("templates/header") %>
+<link rel="stylesheet" href="css/phone-wider.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/main.css" />
 
-
-
-  <body>
-    <%- include("templates/libraries") %>
-    <%- include("templates/header_loggedIn") %>
-      <link rel="stylesheet" href="css/main.css" />
-      <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <span class="fs-4 studopet">STUDOPET</span>
-          </a>
-        </header>
+<body>
+  <div class="phone">
+    <div class="phone-container" id="phone-container">
+      <div style="height: 30px"></div>
+      <div class="top-header">
+        <Button id="menu"></Button>
+        <div id="logo">Studopet</div>
+        <div></div>
       </div>
-      <div class="container"></div>
-
-      <div class="row">
+      <div class="stats-container">
         <div class="stats-column">
           <div class="progressBarContainer">
-            <div class="progressBar" id="hunger">
-            </div>
+            <div class="progressBar" id="hunger"></div>
           </div>
           Hunger
         </div>
         <div class="stats-column">
           <div class="progressBarContainer">
-            <div class="progressBar" id="energy">
-            </div>
+            <div class="progressBar" id="energy"></div>
           </div>
           Energy
         </div>
         <div class="stats-column">
           <div class="progressBarContainer">
-            <div class="progressBar" id="happiness">
-            </div>
+            <div class="progressBar" id="happiness"></div>
           </div>
           Happiness
         </div>
       </div>
       <div class="row">
         <div class="sleeping-box">
-          <img src="../images/moon.png" id="moon">Sleeping
+          <img src="../images/moon.png" id="moon" />Sleeping
         </div>
       </div>
-      <div class="row">
-        <div class="pet">Your Pet</div>
+      <div class="row" style="height: 180px">
+        <div class="pet"><img src="/images/CatJump.gif" width="100%" /></div>
       </div>
       <div class="row">
         <div class="pet-info">
@@ -52,42 +46,46 @@
           <div class="pet-age">Pet Age</div>
         </div>
       </div>
-      <div class="row">
+      <div class="action-container">
         <div class="action-column">
-          <div>
-            <label class="feed">
-              <input type="button" id="feedButton">
-            </label>
-          </div>Feed
+          <Button class="action-button feed" id="feedButton"></Button>
+          <div class="action-label" style="margin-left: 5px">Feed</div>
         </div>
         <div class="action-column">
-          <div>
-            <label class="play">
-              <input type="button" id="playButton">
-            </label>
-          </div>
-          Play
+          <Button class="action-button play" id="playButton"></Button>
+          <div class="action-label" style="margin-left: 6px">Play</div>
         </div>
         <div class="action-column">
-          <div>
+          <div class="switch-container">
             <label class="switch">
               <input type="checkbox" />
               <span class="slider round" id="switch"></span>
             </label>
           </div>
-          <div id="lightsText">Lights Out</div>
+          <div id="lightsText" style="margin-top: -3px; margin-left: 3px">
+            Lights &nbsp;&nbsp;&nbsp;Out
+          </div>
         </div>
         <div class="action-column">
-          <div>
+          <div class="speaker-container">
             <label class="speaker">
-              <input type="checkbox">
-
+              <input type="checkbox" />
             </label>
-          </div>Music
+          </div>
+          <div style="margin-top: 3px">Music</div>
         </div>
       </div>
+<<<<<<< HEAD
       </div>
       <script src='scripts/main.js'></script>
       <script src='scripts/pet_status_display.js'></script>
       <script src='scripts/pet_care.js'></script>
       <%- include("templates/footer") %>
+=======
+    </div>
+  </div>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/pet_status_display.js"></script>
+  <script src="scripts/pet_care.js"></script>
+</body>
+>>>>>>> c848ff41a9ebac7c80801d8aa6279974f6a6a693

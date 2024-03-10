@@ -1,13 +1,106 @@
-.row {
+* {
+  font-family: "Rubik";
+  text-align: center;
+}
+
+.top-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  margin-bottom: 20px;
+}
+
+#logo {
+  font-family: "Lexend";
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 13pt;
+  letter-spacing: 3px;
+  color: #354449;
+}
+
+#menu {
+  background-image: url("/images/dark-menu.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: white;
+  border-radius: 2px;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 14px 28px,
+    rgba(0, 0, 0, 0.12) 0px 10px 10px;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.action-container {
+  position: absolute;
+  text-align: center;
+  bottom: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.action-column {
+  text-transform: uppercase;
+  margin: 5px;
+  font-size: 8pt !important;
+}
+
+.action-button {
+  border: none;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.action-label {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
+.feed {
+  background-image: url("/images/meat.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  top: -2px;
+}
+
+.play {
+  background-image: url("/images/soccer.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.switch-container {
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+
+#lightsText {
+  width: 100%;
+  text-align: center;
+}
+
 .stats-column {
   text-transform: uppercase;
-  font-size: 9pt;
-  width: 33.33%;
+  font-size: 8pt;
+  margin: 5px;
 }
 
 .action-column {
@@ -17,21 +110,17 @@
 }
 
 .pet {
-  margin-top: 50px;
-  padding-top: 40%;
-  height: 350px;
-  background-color: lightblue;
+  height: 80px;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 80%;
 }
 
 .pet-name {
-  font-size: 22pt;
-}
-
-.pet-info {
-  margin-bottom: 100px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-size: 15pt;
+  font-weight: 500;
 }
 
 /* Lights On-Off */
@@ -39,8 +128,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 44px;
+  height: 20px;
 }
 
 /* Hide default HTML checkbox */
@@ -66,10 +155,10 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -84,11 +173,10 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
 }
-
 
 /* Rounded sliders */
 .slider.round {
@@ -105,58 +193,61 @@ input:checked + .slider:before {
   color: white; /* White text color for better contrast */
 }
 
-body {
-  transition: background-color 0.5s ease; 
+#body {
+  transition: background-color 0.5s ease;
 }
 
 .studopet {
- background-color: transparent;
+  background-color: transparent;
 }
 
 .sleeping-box {
-  background-color: #f1f1f1; 
-  color: #333; 
-  padding: 1px 1px; 
-  border-radius: 8px; 
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 1px 1px;
+  border-radius: 8px;
   visibility: hidden;
   width: 100px;
   height: 30px;
   margin: 25px auto 0 auto;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: #0065d0;
-  background-color: #C9F0FF;
+  background-color: #c9f0ff;
   font-weight: 600;
-  line-height: 2
+  line-height: 2;
+  margin-top: 10px;
+  margin-bottom: -4px;
 }
 
 .progressBarContainer {
-  width: 100%;
-  background-color: #eee;
-  border-radius: 5px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #e3e5e5;
+  margin-bottom: 3px;
 }
 
 .progressBar {
   width: 0%;
-  height: 20px;
-  border-radius: 5px;
-  -moz-transition: all .5s ease-in;
-  -o-transition: all .5s ease-in;
-  -webkit-transition: all .5s ease-in;
-  transition: all .5s ease-in;
+  height: 13px;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .bad {
-  background: #FF4E4E;
+  background: #ff4e4e;
 }
 
 .moderate {
-  background: #DD950A;
+  background: #dd950a;
 }
 
 .good {
-  background: #11FF93;
+  background: #11ff93;
 }
 
 /**music*/
@@ -167,45 +258,51 @@ body {
 .speaker {
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 30px;
-  background-image: url('../images/SpeakerDOff.png');
+  width: 23px;
+  height: 23px;
+  margin-left: 7px;
+  margin-top: 3px;
+  background-image: url("../images/SpeakerDOff.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-#moon{
+#moon {
   margin-right: 5px;
+  position: relative;
+  top: -1px;
 }
 
-.feed input{
-  display:none;
+.feed input {
+  display: none;
 }
 
-.feed{
+.feed {
   position: relative;
   display: inline-block;
   width: 40px;
   height: 30px;
-  background-image: url('../images/meat.png'); 
+  background-image: url("../images/meat.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
-.play input{
-  display:none; 
+.play input {
+  display: none;
 }
 
-.play{
+.play {
   position: relative;
   display: inline-block;
   width: 40px;
   height: 30px;
-  background-image: url('../images/soccer.png'); 
+  background-image: url("../images/soccer.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
-
