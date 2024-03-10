@@ -5,7 +5,7 @@ const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const { ObjectId } = require("mongodb");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt"); 
 const saltRounds = 12;
 
 const port = process.env.PORT || 3000;
@@ -84,7 +84,8 @@ app.get("/main", async (req, res) => {
         return;
     }
     const pet = await petCollection.findOne({ user_id: req.session.userId });
-    res.render("main", { pet: pet });
+    const user = await userCollection.findOne({ _id: new ObjectId(req.session.userId) });
+    res.render("main", { pet: pet, user: user });
 });
 
 app.get("/register_pet_type", (req, res) => {

@@ -43,7 +43,7 @@
       <div class="row">
         <div class="pet-info">
           <div class="pet-name"><%= pet.name %></div>
-          <div id="pet-age"></div>
+          <div id="pet-age" data-registered-date="<%= user.registered_date %>"></div>
         </div>
       </div>
       <div class="action-container">
@@ -75,13 +75,6 @@
           <div style="margin-top: 3px">Music</div>
         </div>
       </div>
-<<<<<<< HEAD
-      </div>
-      <script src='scripts/main.js'></script>
-      <script src='scripts/pet_status_display.js'></script>
-      <script src='scripts/pet_care.js'></script>
-      <%- include("templates/footer") %>
-=======
     </div>
   </div>
   <script src="scripts/main.js"></script>
@@ -90,4 +83,3 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
   <script src="scripts/pet_age.js"></script>
 </body>
->>>>>>> c848ff41a9ebac7c80801d8aa6279974f6a6a693
