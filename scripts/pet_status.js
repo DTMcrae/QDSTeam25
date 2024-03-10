@@ -12,7 +12,7 @@ function getDateStr() {
 //Returns the number of hours between date1, and date 2.
 function hoursPassed(date1, date2) {
     //Calculate the difference in milliseconds
-    var diff = (date2.getTime() - date1.getTime())/1000;
+    var diff = (new Date(date2).getTime() - new Date(date1).getTime())/1000;
     //Conversion to hours
     diff /= (60 * 60);
     //Returns the absolute value, in case date1 is larger than date2.
@@ -25,28 +25,29 @@ Index 0: Hunger
 Index 1: Energy
 Index 2: Happiness
 */
-function calculateStats(last_login, hunger, energy, happniness) {
+ function calculateStats(last_login, hunger, energy, happniness) {
     //Temp last login var
     // var last_login = new Date(year=2024,monthIndex=2,date=8,hours=22,minutes=15);
-    var hours = hoursPassed(last_login,new Date(getDateStr()));
+    var hours = hoursPassed(last_login, new Date());
     console.log("Hours passed: " + hours);
-    return [
+    var newStats =[
         determineHunger(hours, hunger),
         determineEnergy(hours, energy),
         determineHappiness(hours, happniness)
-        ]
+        ];
+    return newStats;
 }
 
 // Calculates the pet's happiness after the given hours have passed.
 function determineHappiness(hoursPassed, currentHappiness) {
     // var currentHappiness = 100;
-    return Math.round(currentHappiness - (hoursPassed * happinessDecayRate));
+    return Math.max(0,Math.round(currentHappiness - (hoursPassed * happinessDecayRate)));
 }
 
 // Calculates the pet's hunger after the given hours have passed.
 function determineHunger(hoursPassed, currentHunger) {
     // var currentHunger = 100;
-    return Math.round(currentHunger - (hoursPassed * hungerDecayRate));
+    return Math.max(0,Math.round(currentHunger - (hoursPassed * hungerDecayRate)));
 }
 
 // Calculates the pet's energy after the given hours have passed.
@@ -56,7 +57,7 @@ function determineEnergy(hoursPassed, currentEnergy) {
     if(asleep) {
         return currentEnergy + (hoursPassed * sleepRestoreRate);
     }
-    return Math.round(currentEnergy - (hoursPassed * energyDecayRate));
+    return Math.max(0,Math.round(currentEnergy - (hoursPassed * energyDecayRate)));
 }
 
 module.exports = {

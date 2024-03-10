@@ -11,7 +11,9 @@
     Your daily routine companion. Project made for QDS Hacks 2024
     <br />
     <br />
-    <a href="https://youtube.com/LINKHERE">View YouTube Demo</a>
+    <a href="https://studopet.onrender.com/">Hosted Link</a>
+    ·
+    <a href="https://youtube.com/LINKHERE">YouTube Demo</a>
     ·
     <a href="https://devpost.com/software/studopet">DevPost Submission</a>
   </p>
@@ -140,7 +142,7 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 <!-- CONTACT -->
 ## 🗣 Contact
 
-- Leanne Holmes, BScACS Term 5 - leanne.holmes.dev@gmail.com 
+- Leanne Holmes, BScACS Term 5 - lholmes24@my.bcit.ca
 - Phuong Le, CST Term 2 - lttphuong7@gmail.com
 - Daniel McRae, CST Term 3 - dtmcrae0@gmail.com
 - Yerim Moon, CST Term 3- myr9901@gmail.com 

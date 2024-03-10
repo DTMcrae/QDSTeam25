@@ -267,8 +267,12 @@ app.get(`/api/stats`, async(req,res) => {
     const pet = await petCollection.findOne({ user_id: uid });
     const user = await userCollection.findOne({ _id: new ObjectId(uid) });
 
-    res.json(stats.calculateStats(user.last_time_logged_in, pet.energy, pet.hunger, pet.happiness));
-})
+    const results = stats.calculateStats(user.last_time_logged_in, pet.energy, pet.hunger, pet.happiness);
+    await petCollection.updateOne({user_id: uid}, {$set: {hunger: results[0], energy: results[1], happiness: results[2]}});
+    await userCollection.updateOne({_id: new ObjectId(uid)}, {$set: {last_time_logged_in: new Date()}});
+
+    res.json(results);
+});
 
 app.get(`/api/eat`, async(req,res) => {
     const uid = req.session.userId;
@@ -278,18 +282,20 @@ app.get(`/api/eat`, async(req,res) => {
 
     console.log("New: " + newHunger);
     //Update Hunger in the database
+    await petCollection.updateOne({user_id: pet.user_id}, {$set: {hunger: newHunger}})
     
     res.json({result: "fed"});
-})
+});
 
 app.get(`/api/play`, async(req,res) => {
     const uid = req.session.userId;
     const pet = await petCollection.findOne({ user_id: uid });
     var newHappiness = Math.min(100,pet.happiness + 50);
     //Update Happiness in the database
+    await petCollection.updateOne({user_id: pet.user_id}, {$set: {happiness: newHappiness}})
 
     res.json({result: "played"});
-})
+});
 
 app.get("*", (req, res) => {
   res.status(404);
