@@ -97,3 +97,27 @@ musicPlayer.addEventListener('change', function () {
         updateSpeakerImage(false, toggle.checked);
     }
 });
+
+//feed pet request 
+const feedButton = document.getElementById('feedButton')
+feedButton.addEventListener('click', async () => {
+    try {
+        const response = await fetch('/api/eat');
+        const data = await response.json();
+        console.log(data); // Log the response from the API
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+//play pet request
+const playButton = document.getElementById('playButton')
+playButton.addEventListener('click', async () => {
+    try {
+        const response = await fetch('/api/play');
+        const data = await response.json();
+        console.log(data); // Log the response from the API
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
