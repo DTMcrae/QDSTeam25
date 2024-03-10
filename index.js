@@ -67,7 +67,7 @@ app.get("/signup", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { error: null });
 });
 
 app.get("/main", async (req, res) => {
@@ -159,6 +159,7 @@ app.post("/signupSubmit", async (req, res) => {
 app.post("/loginSubmit", async (req, res) => {
   // Logic for handling the login-submit route and processing the login form submission
   let email = req.body.email;
+  let submittedPassword = req.body.password;
 
   try {
     const result = await userCollection
@@ -173,27 +174,37 @@ app.post("/loginSubmit", async (req, res) => {
     if (result.length === 0) {
       // No user found with the provided email
       console.log("Invalid email or user does not exist.");
-      return res.redirect("/login"); // Redirect back to login page or handle appropriately
+      return res.render('login', { error: "Invalid email or password." });
     }
 
-  const uid = result[0]._id;
+    // Verify password
+    const match = await bcrypt.compare(submittedPassword, user.password);
 
-  await userCollection.updateOne(
-    { _id: new ObjectId(uid) },
-    { $set: { last_time_logged_in: new Date() } }
-  );
-  console.log("Updated last_time_logged_in");
-
-  req.session.authenticated = true;
-  req.session.email = email;
-  req.session.cookie.maxAge = expireTime;
-  req.session.userId = uid;
-
-  res.redirect("/main");
+    const uid = result[0]._id;
+    if (match) {
+      await userCollection.updateOne(
+        { _id: new ObjectId(uid) },
+        { $set: { last_time_logged_in: new Date() } }
+      );
+      console.log("Updated last_time_logged_in");
+  
+      req.session.authenticated = true;
+      req.session.email = email;
+      req.session.cookie.maxAge = expireTime;
+      req.session.userId = uid;
+  
+      res.redirect("/main");
+    } else {
+      // Password does not match
+      console.log("Invalid password.");
+      // return res.redirect("/login"); // Redirect back to login page or handle appropriately
+      return res.render('login', { error: "Invalid email or password." });
+    }
+    
   } catch (error) {
     console.error("Login error: ", error);
     // Handle errors appropriately
-    res.status(500).send("An error occurred during login.");
+    return res.render('login', { error: "Invalid email or password." });
   }
 });
 

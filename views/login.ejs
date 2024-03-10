@@ -7,6 +7,9 @@
   <div class="phone-container">
     <div style="height: 40px"></div>
     <h1>Sign in</h1>
+    <% if (error) { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
     <form action="/loginSubmit" method="post">
       <div class="form-label">Email address</div>
 

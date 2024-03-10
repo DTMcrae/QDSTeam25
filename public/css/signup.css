@@ -74,3 +74,12 @@ a {
   color: #008bb9;
   text-decoration: none;
 }
+
+.error-message{
+  color: #ff4e4e;
+  font-family: "Rubik";
+  font-size: 10pt;
+  /* margin-top: 5px; */
+  margin-bottom: 10px;
+  text-align: center;
+}
