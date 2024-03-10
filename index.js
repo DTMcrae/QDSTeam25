@@ -160,13 +160,21 @@ app.post("/loginSubmit", async (req, res) => {
   // Logic for handling the login-submit route and processing the login form submission
   let email = req.body.email;
 
-  const result = await userCollection
-    .find({ email: email })
-    .project({
-      _id: 1,
-      password: 1,
-    })
-    .toArray();
+  try {
+    const result = await userCollection
+      .find({ email: email })
+      .project({
+        _id: 1,
+        password: 1,
+      })
+      .toArray();
+
+    // Check if user exists
+    if (result.length === 0) {
+      // No user found with the provided email
+      console.log("Invalid email or user does not exist.");
+      return res.redirect("/login"); // Redirect back to login page or handle appropriately
+    }
 
   const uid = result[0]._id;
 
@@ -182,6 +190,11 @@ app.post("/loginSubmit", async (req, res) => {
   req.session.userId = uid;
 
   res.redirect("/main");
+  } catch (error) {
+    console.error("Login error: ", error);
+    // Handle errors appropriately
+    res.status(500).send("An error occurred during login.");
+  }
 });
 
 app.post("/register_pet_type_submit", async (req, res) => {
