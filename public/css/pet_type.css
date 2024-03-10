@@ -1,18 +1,18 @@
 .box-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    /* flex-wrap: wrap; */
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
 }
 
 .form-check {
-    flex-basis: 50%;
-    text-align: center;
-    padding: 10px;
+  flex-basis: 50%;
+  text-align: center;
+  padding: 10px;
 }
 
 .form-check-input {
-    display: none; /* Hide the default radio button */
+  display: none; /* Hide the default radio button */
 }
 
 /* .form-check-input + img {
@@ -20,18 +20,107 @@
 } */
 
 .form-check label {
-    display: inline-block;
-    cursor: pointer;
-    /* border: 1px solid #D1CCCC; */
-    border-radius: 10px;
-    transition: background-color 0.3s ease-in-out, border-color 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  /* border: 1px solid #D1CCCC; */
+  border-radius: 10px;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease;
 }
 
 .form-check-label:hover {
-    background-color: #f7f7f7;
+  background-color: #f7f7f7;
 }
 
 /* Custom styling for checked state using sibling combinator */
 /* .form-check-input:checked + label {
     border: 2px solid blue;
 } */
+
+ul {
+  list-style-type: none;
+  width: 100%;
+}
+
+li {
+  display: inline-block;
+}
+
+input[type="radio"][id^="cb"] {
+  display: none;
+}
+
+label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 2px solid #a8cbff;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+  z-index: 3;
+}
+
+label img {
+  height: 90px;
+  width: 90px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid white;
+}
+
+:checked + label {
+  border-color: #ddd;
+}
+
+:checked + label:before {
+  content: "✓";
+  background-color: #a8cbff;
+  transform: scale(1);
+}
+
+:checked + label img {
+  transform: scale(1);
+  box-shadow: 0 0 5px #a8cbff;
+  z-index: -1;
+}
+
+.radio-label {
+  text-align: center;
+}
+
+.item-1 {
+  position: relative;
+  left: -40px;
+}
+
+.item-2 {
+  position: relative;
+  left: -10px;
+}
+
+.item-3 {
+  position: relative;
+  left: -40px;
+  margin-top: 20px;
+}
+
+.item-4 {
+  position: relative;
+  left: -10px;
+}

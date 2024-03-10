@@ -7,13 +7,36 @@
 
 <div class="phone">
   <div class="phone-container">
-    <div style="margin-top: 60px">
+    <div style="margin-top: 40px">
       <h1>Step 1</h1>
       <h1 style="margin-top: -10px">Pick your Pet</h1>
     </div>
     <form action="/register_pet_type_submit" method="post">
-
-      <div class="box-container">
+      <ul>
+        <li class="item-1">
+          <input type="radio" id="dog" name="petType" value="dog" />
+          <label for="dog"><img src="../images/DogIdle.gif" /></label>
+          <div class="radio-label">Dog</div>
+        </li>
+        <li class="item-2">
+          <input type="radio" id="cat" name="petType" value="cat" />
+          <label for="cat"><img src="../images/CatIdle.gif" /></label>
+          <div class="radio-label">Cat</div>
+        </li>
+        <li class="item-3">
+          <input type="radio" id="bunny" name="petType" value="bunny" />
+          <label for="bunny"><img src="../images/BunnyIdle.gif" /></label>
+          <div class="radio-label">Bunny</div>
+        </li>
+        <li class="item-4">
+          <input type="radio" id="guineapig" name="petType" value="guineapig" />
+          <label for="guineapig"
+            ><img src="../images/GuineapigIdle.gif"
+          /></label>
+          <div class="radio-label">Guinea Pig</div>
+        </li>
+      </ul>
+      <!-- <div class="box-container">
         <div class="form-check">
             <label class="form-check-label" for="dog">
                 <img src="../images/DogIdle.gif" alt="Dog" style="width: 100px">
@@ -44,58 +67,10 @@
                 Guineapig
             </label>
         </div>
-    </div>
-    
-      <!-- <div class="box-container">
-        <div class="form-check">
-          <input
-            id="dog"
-            name="petType"
-            type="radio"
-            class="form-check-input"
-            value="dog"
-            checked=""
-            required=""
-          />
-          <label class="form-check-label" for="dog">Dog</label>
-        </div>
-        <div class="form-check">
-          <input
-            id="cat"
-            name="petType"
-            type="radio"
-            class="form-check-input"
-            value="cat"
-            required=""
-          />
-          <label class="form-check-label" for="cat">Cat</label>
-        </div>
-      </div>
-      <div class="box-container">
-        <div class="form-check">
-          <input
-            id="bunny"
-            name="petType"
-            type="radio"
-            class="form-check-input"
-            value="bunny"
-            required=""
-          />
-          <label class="form-check-label" for="bunny">Bunny</label>
-        </div>
-        <div class="form-check">
-          <input
-            id="guineapig"
-            name="petType"
-            type="radio"
-            class="form-check-input"
-            value="guineapig"
-            required=""
-          />
-          <label class="form-check-label" for="sheep">Guineapig</label>
-        </div>
-      </div> -->
-      <button class="btn-purple" type="submit">Confirm</button>
+    </div> -->
+      <button class="btn-purple" type="submit" style="margin-top: 10px">
+        Confirm
+      </button>
     </form>
   </div>
 </div>
