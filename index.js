@@ -243,6 +243,27 @@ app.get(`/api/stats`, async(req,res) => {
     res.json(stats.calculateStats(user.last_time_logged_in, pet.energy, pet.hunger, pet.happiness));
 })
 
+app.get(`/api/eat`, async(req,res) => {
+    const uid = req.session.userId;
+    const pet = await petCollection.findOne({ user_id: uid });
+    console.log("Old: " + pet.hunger);
+    var newHunger = Math.min(100,pet.hunger + 50);
+
+    console.log("New: " + newHunger);
+    //Update Hunger in the database
+
+    res.json({result: "fed"});
+})
+
+app.get(`/api/play`, async(req,res) => {
+    const uid = req.session.userId;
+    const pet = await petCollection.findOne({ user_id: uid });
+    var newHappiness = Math.min(100,pet.happiness + 50);
+    //Update Happiness in the database
+
+    res.json({result: "played"});
+})
+
 app.get("*", (req, res) => {
   res.status(404);
   res.render("404");
