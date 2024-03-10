@@ -3,17 +3,29 @@
 <link rel="stylesheet" href="css/signup.css" />
 <link rel="stylesheet" href="css/modal.css" />
 <section class="modal hidden">
-    <div>
-        <form action="/update_schedule_submit" method="post">
-            <div class="form-label">Sleep time</div>
-            <input name="sleepTime" type="time" class="form-control" id="floatingSleepTime" style="margin-bottom: 20px; padding-right: 5px">
-            <div class="form-label">Wake time</div>
-            <input name="wakeTime" type="time" class="form-control" id="floatingWakeTime" style="margin-bottom: 25px; padding-right: 5px">
-            <button class="btn-purple" type="submit">Save</button>
-            <button class="btn-purple" type="submit">Cancel</button>
-        </form>
-    </div>
+  <div>
+    <form action="/update_schedule_submit" method="post">
+      <div class="form-label">Sleep time</div>
+      <input
+        name="sleepTime"
+        type="time"
+        class="form-control"
+        id="floatingSleepTime"
+        style="margin-bottom: 20px; padding-right: 5px"
+      />
+      <div class="form-label">Wake time</div>
+      <input
+        name="wakeTime"
+        type="time"
+        class="form-control"
+        id="floatingWakeTime"
+        style="margin-bottom: 25px; padding-right: 5px"
+      />
+      <button class="btn-purple" type="submit">Save</button>
+      <button class="btn-purple" type="submit">Cancel</button>
+    </form>
+  </div>
 </section>
-  
-  <div class="overlay hidden"></div>
-  <button class="btn btn-open">Sleep Settins</button>
+
+<div class="overlay hidden"></div>
+<button class="btn btn-open">Sleep Settings</button>
