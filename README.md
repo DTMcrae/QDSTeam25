@@ -127,12 +127,13 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 - [x] Created wireframes
 - [x] Setup boilerplate code and database
-- [x] Added sign up and authentication
-- [x] Implement progress bars
-- [x] Implement game mechanics
+- [x] Added user authentication
+- [x] Implement health progress bars
+- [x] Implement interactions
+- [x] Pet customization
+- [x] User input validation
+- [x] Editing sleep schedules 
 - [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -153,9 +154,12 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 <!-- ACKNOWLEDGMENTS -->
 ## 📑Acknowledgments
 
-### CSS
+### HTML/CSS
 * [W3 Schools Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp)
 * [Hamburger Fold-Out Menu](https://codepen.io/erikterwan/pen/EVzeRP)
+
+### Assets
+* [2D Animal Pack](https://assetstore.unity.com/packages/2d/characters/2d-cute-domestic-animal-pack-v-2-82750)
 * [Figma mesh gradients](https://www.figma.com/community/file/1095832504407038817)
 * [Icons](https://icons8.com/)
 
