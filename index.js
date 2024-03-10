@@ -329,6 +329,7 @@ app.get(`/api/play`, async(req,res) => {
     res.json({result: "played"});
 });
 
+//Checks if the pet is asleep, and toggles sleep if a tag is given.
 app.get(`/api/asleep`, async(req,res) => {
     const uid = req.session.userId;
     var asleep = req.param("asleep");
@@ -356,6 +357,17 @@ app.get(`/api/asleep`, async(req,res) => {
         res.json({asleep: true});
         return;
     }
+});
+
+//Gets the current pet's type
+app.get(`/api/pet`, async(req,res) => {
+    const uid = req.session.userId;
+    const pet = await petCollection.findOne({ user_id: uid });
+    if(pet.pet_type === undefined) {
+        res.json({pet: "unknown"});
+        return;
+    }
+    res.json({pet: ((pet.pet_type).charAt(0).toUpperCase() + pet.pet_type.slice(1))});
 });
 
 app.get("*", (req, res) => {
