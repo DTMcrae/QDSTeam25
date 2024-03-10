@@ -156,6 +156,7 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 ### CSS
 * [W3 Schools Toggle Switch](https://www.w3schools.com/howto/howto_css_switch.asp)
 * [Hamburger Fold-Out Menu](https://codepen.io/erikterwan/pen/EVzeRP)
+* [Figma mesh gradients](https://www.figma.com/community/file/1095832504407038817)
 * [Icons](https://icons8.com/)
 
 ### Playlist
