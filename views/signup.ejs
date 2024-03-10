@@ -7,6 +7,9 @@
   <div class="phone-container">
     <div style="height: 40px"></div>
     <h1 style="margin-bottom: 20px">Sign Up</h1>
+    <% if (error) { %>
+      <div class="error-message" style= "white-space: pre-line"><%= error %></div>
+    <% } %>
     <form action="/signupSubmit" method="post">
       <div class="form-label">Email Address</div>
       <div style="margin-bottom: 15px">

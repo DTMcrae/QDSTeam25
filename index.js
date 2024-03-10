@@ -63,7 +63,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", { error: null });
 });
 
 app.get("/login", (req, res) => {
@@ -118,10 +118,7 @@ app.post("/signupSubmit", async (req, res) => {
     .toArray();
 
   if (emailCheck.length > 0) {
-    res.render("signup-submit", {
-      signupFail: true,
-      errorMessage: `This email already exists. \n Please choose a different email.`,
-    });
+    res.render("signup", {error: `This email already exists.\nPlease choose a different email.`});
     return;
   }
 
