@@ -22,17 +22,14 @@ var darkMode = false;
 function updateStyles(darkMode) {
   var phoneBackground = document.getElementById("phone-container");
   var logo = document.getElementById("logo");
-  var menu = document.getElementById("menu");
   if (darkMode) {
     phoneBackground.style.backgroundImage = "url(/images/dark-background.png)";
     phoneBackground.style.color = "#DDDDDD";
     logo.style.color = "#DDDDDD";
-    menu.style.backgroundImage = "url(/images/light-menu.png)";
   } else {
     phoneBackground.style.backgroundImage = "url(/images/light-background.png)";
     phoneBackground.style.color = "#354449";
     logo.style.color = "#354449";
-    menu.style.backgroundImage = "url(/images/dark-menu.png)";
   }
 }
 
@@ -142,17 +139,16 @@ function toggleTheme() {
     ? "url('../images/soccerW.png')"
     : "url('../images/soccer.png')";
 
-    fetch("/api/asleep/?asleep=" + !toggle);
+  fetch("/api/asleep/?asleep=" + !toggle);
 }
 
 async function sleepState() {
-    const rest = await fetch("/api/asleep");
-    const awake = await rest.json();
-    console.log(awake);
-    if(awake.asleep)
-    {
-        toggle.checked = true;
-        toggleTheme();
-    }
+  const rest = await fetch("/api/asleep");
+  const awake = await rest.json();
+  console.log(awake);
+  if (awake.asleep) {
+    toggle.checked = true;
+    toggleTheme();
+  }
 }
-sleepState()
+sleepState();
