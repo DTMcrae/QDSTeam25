@@ -13,7 +13,7 @@
     <br />
     <a href="https://studopet.onrender.com/">Hosted Link</a>
     ·
-    <a href="https://youtube.com/LINKHERE">YouTube Demo</a>
+    <a href="https://www.youtube.com/watch?v=rXF4wz3Thfs">YouTube Demo</a>
     ·
     <a href="https://devpost.com/software/studopet">DevPost Submission</a>
   </p>
