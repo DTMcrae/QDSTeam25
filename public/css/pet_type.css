@@ -124,3 +124,8 @@ label img {
   position: relative;
   left: -10px;
 }
+
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
