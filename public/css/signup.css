@@ -21,7 +21,15 @@ input {
   &:focus {
     border: 2px solid #a8cbff;
     outline: none;
+    background-color: white;
   }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 .form-label {
@@ -43,6 +51,22 @@ input {
   &:hover {
     cursor: pointer;
     background-color: #7e65ff;
+  }
+}
+
+.btn-blue {
+  width: 76%;
+  margin-left: 12%;
+  margin-right: auto;
+  font-family: "Rubik";
+  background-color: #4e95ff;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 12px 20px 12px 20px;
+  &:hover {
+    cursor: pointer;
+    background-color: #66a3ff;
   }
 }
 

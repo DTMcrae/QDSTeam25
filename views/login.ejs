@@ -1,27 +1,41 @@
 <%- include("templates/header") %>
-    <h1>Log in</h1>
-    <form action='/loginSubmit' method='post' class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+<link rel="stylesheet" href="css/phone.css" />
+<link rel="stylesheet" href="css/signup.css" />
+<link rel="stylesheet" href="css/fonts.css" />
 
-      
-        <div class="form-indication">
-        <p>Email address</p>
-        </div>
+<div class="phone">
+  <div class="phone-container">
+    <div style="height: 40px"></div>
+    <h1>Sign in</h1>
+    <form action="/loginSubmit" method="post">
+      <div class="form-label">Email address</div>
 
-        <div class="form-floating mb-3">
-          <input name="email" type="email" class="form-control" id="floatingEmail" placeholder="Email">
-          <label for="floatingEmail">Email</label>
-        </div>
+      <div style="margin-bottom: 15px">
+        <input
+          name="email"
+          type="email"
+          class="form-control"
+          id="floatingEmail"
+          placeholder="Email"
+        />
+      </div>
 
-        <div class="form-indication">
-          <p>Password</p>
-        </div>
-        <div class="form-floating mb-3">
-          <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
-        </div>
+      <div class="form-label">Password</div>
+      <div style="margin-bottom: 20px">
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+        />
+      </div>
 
-        <button class="w-100 btn btn-lg btn-primary" style="margin-bottom: 15px; background-color: #604BFF" type="submit">Submit</button>
-
-        <p>Need to register? Sign up <a href ="">here</a></p>
+      <button class="btn-purple" type="submit">Submit</button>
     </form>
-<%- include("templates/footer") %>
+
+    <div style="text-align: center; margin-top: 15px">
+      Need to register? Sign up <a href="/signup">here</a>
+    </div>
+  </div>
+</div>

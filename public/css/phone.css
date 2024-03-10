@@ -3,7 +3,7 @@ body {
 }
 
 .phone {
-  background-image: url("./assets/phone2.png");
+  background-image: url("/images/phone.png");
   background-repeat: no-repeat;
   width: 507px;
   height: 720px;
@@ -20,7 +20,7 @@ body {
   top: 109px;
   width: 220px;
   height: 475px;
-  background-image: url("./assets/light-background.png");
+  background-image: url("/images/light-background.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: transparent;
