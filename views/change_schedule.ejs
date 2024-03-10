@@ -1,0 +1,37 @@
+<%- include("templates/header") %>
+<link rel="stylesheet" href="css/phone.css" />
+<link rel="stylesheet" href="css/signup.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+
+<div class="phone">
+  <div class="phone-container">
+    <div style="margin-top: 60px"></div>
+    <h1 style="margin-top: -15px">Set your sleep</h1>
+    <h1 style="margin-top: -15px">schedule</h1>
+    <form action="/register_schedule_submit" method="post">
+      <div class="form-label">Sleep time</div>
+      <input
+        name="sleepTime"
+        type="time"
+        class="form-control"
+        id="floatingSleepTime"
+        style="margin-bottom: 20px; padding-right: 5px"
+        <% if(sleep) {%>
+          value = "<%= sleep%>"
+        <% } %>
+      />
+      <div class="form-label">Wake time</div>
+      <input
+        name="wakeTime"
+        type="time"
+        class="form-control"
+        id="floatingWakeTime"
+        style="margin-bottom: 25px; padding-right: 5px"
+        <% if(wake) {%>
+          value = "<%= wake%>"
+        <% } %>
+      />
+      <button class="btn-purple" type="submit">Save</button>
+    </form>
+  </div>
+</div>
