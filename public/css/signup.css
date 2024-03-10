@@ -46,6 +46,22 @@ input {
   }
 }
 
+.btn-blue {
+  width: 76%;
+  margin-left: 12%;
+  margin-right: auto;
+  font-family: "Rubik";
+  background-color: #4e95ff;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 12px 20px 12px 20px;
+  &:hover {
+    cursor: pointer;
+    background-color: #66a3ff;
+  }
+}
+
 a {
   color: #008bb9;
   text-decoration: none;
