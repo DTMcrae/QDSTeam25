@@ -127,6 +127,7 @@ app.post("/signupSubmit", async (req, res) => {
     email: email,
     password: hashedPassword,
     last_time_logged_in: new Date(),
+    registered_date: new Date(),
   });
   console.log("Inserted user");
 
