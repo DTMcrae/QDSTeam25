@@ -1,4 +1,28 @@
-<%- include("templates/header") %> 
-<div><a class="btn btn-secondary rounded-pill px-3" href="/signup">Sign Up</a></div></br>
-<div><a class="btn btn-primary rounded-pill px-3" href="/login">Log In</a></div>
-<%- include("templates/footer") %>
+<link rel="stylesheet" href="css/phone.css" />
+<link rel="stylesheet" href="css/signup.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+
+<div class="phone">
+  <div class="phone-container">
+    <div style="margin-top: 60px"></div>
+    <h1>Studopet</h1>
+    <div style="text-align: center">
+      Helping students stick to healthier routines with fun, interactive pets.
+    </div>
+    <div style="margin-top: 30px">
+      <Button class="btn-purple" onClick="toSignup()">Create an account</Button>
+    </div>
+    <div style="margin-top: 10px">
+      <Button class="btn-blue" onClick="toLogin()">Sign In</Button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toSignup() {
+    window.location.href = "/signup";
+  }
+  function toLogin() {
+    window.location.href = "/login";
+  }
+</script>
