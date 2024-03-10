@@ -75,7 +75,8 @@ app.get("/main", async (req, res) => {
         res.redirect("/");
         return;
     }
-    res.render("main");
+    const pet = await petCollection.findOne({ user_id: req.session.userId });
+    res.render("main", { pet: pet });
 });
 
 app.get("/register_pet_type", (req, res) => {
@@ -162,6 +163,7 @@ app.post("/loginSubmit", async (req, res) => {
     .toArray();
 
   const uid = result[0]._id;
+
   await userCollection.updateOne(
     { _id: new ObjectId(uid) },
     { $set: { last_time_logged_in: new Date() } }
