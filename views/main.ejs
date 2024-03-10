@@ -61,12 +61,12 @@
         </div>
       </div>
       <div class="row" style="height: 180px">
-        <div class="pet"><img src="/images/CatJump.gif" width="100%" /></div>
+        <div class="pet"><img id="pet-animator" src="" width="100%" /></div>
       </div>
       <div class="row">
         <div class="pet-info">
           <div class="pet-name"><%= pet.name %></div>
-          <div id="pet-age"></div>
+          <div id="pet-age" data-registered-date="<%= user.registered_date %>"></div>
         </div>
       </div>
       <div class="action-container">
@@ -100,6 +100,7 @@
       </div>
     </div>
   </div>
+  <script src="scripts/pet_display.js"></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/pet_status_display.js"></script>
   <script src="scripts/pet_care.js"></script>

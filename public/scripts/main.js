@@ -82,10 +82,12 @@ musicPlayer.addEventListener("change", function () {
 const feedButton = document.getElementById("feedButton");
 feedButton.addEventListener("click", async () => {
   try {
+    if(toggle.checked) return;
     const response = await fetch("/api/eat");
     const data = await response.json();
     console.log(data); // Log the response from the API
     updateDisplay();
+    displayAnimation("eat");
   } catch (error) {
     console.error("Error:", error);
   }
@@ -95,10 +97,12 @@ feedButton.addEventListener("click", async () => {
 const playButton = document.getElementById("playButton");
 playButton.addEventListener("click", async () => {
   try {
+    if(toggle.checked) return;
     const response = await fetch("/api/play");
     const data = await response.json();
     console.log(data); // Log the response from the API
     updateDisplay();
+    displayAnimation("play");
   } catch (error) {
     console.error("Error:", error);
   }
@@ -139,7 +143,13 @@ function toggleTheme() {
     ? "url('../images/soccerW.png')"
     : "url('../images/soccer.png')";
 
-  fetch("/api/asleep/?asleep=" + !toggle);
+    fetch("/api/asleep/?asleep=" + !toggle.checked);
+    if(toggle.checked == true) {
+        displayAnimation("sleep");
+    }
+    else {
+        displayAnimation("none");
+    }
 }
 
 async function sleepState() {
