@@ -123,7 +123,7 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 
 <!-- ROADMAP -->
-##  🗺️Roadmap
+## 🗺️Roadmap
 
 - [x] Created wireframes
 - [x] Setup boilerplate code and database
@@ -139,7 +139,7 @@ Install the latest version of Node.js from [here](https://nodejs.org/en)
 
 
 <!-- CONTACT -->
-## 🗣 Contact
+## 🗣Contact
 
 - Leanne Holmes, BScACS Term 5 - lholmes24@my.bcit.ca
 - Phuong Le, CST Term 2 - lttphuong7@gmail.com
