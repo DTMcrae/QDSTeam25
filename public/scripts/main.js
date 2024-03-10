@@ -123,6 +123,7 @@ feedButton.addEventListener("click", async () => {
     const response = await fetch("/api/eat");
     const data = await response.json();
     console.log(data); // Log the response from the API
+    updateDisplay();
   } catch (error) {
     console.error("Error:", error);
   }
@@ -135,6 +136,7 @@ playButton.addEventListener("click", async () => {
     const response = await fetch("/api/play");
     const data = await response.json();
     console.log(data); // Log the response from the API
+    updateDisplay();
   } catch (error) {
     console.error("Error:", error);
   }
